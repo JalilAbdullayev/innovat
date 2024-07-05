@@ -12,12 +12,12 @@ class SettingsSeeder extends Seeder {
      */
     public function run(): void {
         Settings::create([
-            'title' => 'Checklab',
-            'description' => 'Checklab',
-            'keywords' => 'Checklab',
-            'author' => 'Checklab',
-            'logo' => 'checklab.png',
-            'favicon' => 'checklab.png',
+            'title' => 'Innovat',
+            'description' => 'Innovat',
+            'keywords' => 'Innovat',
+            'author' => 'Innovat',
+            'logo' => 'innovat.png',
+            'favicon' => 'innovat.png',
         ]);
     }
 }

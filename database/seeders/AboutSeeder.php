@@ -11,8 +11,8 @@ class AboutSeeder extends Seeder {
      */
     public function run(): void {
         About::create([
-            'title' => 'Checklab',
-            'image' => 'checklab.png',
+            'title' => 'Innovat',
+            'image' => 'innovat.png',
             'about' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
         ]);
     }
