@@ -5,6 +5,7 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\FrontController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\QualityController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\UserController;
@@ -50,6 +51,22 @@ Route::prefix('admin')->name('admin.')->middleware('auth')->group(function() {
     });
 
     Route::prefix('services')->name('services.')->controller(ServiceController::class)->group(function() {
+        Route::get('/', 'index')->name('index');
+
+        Route::prefix('create')->name('create')->group(function() {
+            Route::get('/', 'create');
+            Route::post('/', 'store');
+        });
+
+        Route::prefix('edit/{id}')->name('edit')->group(function() {
+            Route::get('/', 'edit');
+            Route::post('/', 'update');
+        });
+
+        Route::get('delete/{id}', 'delete')->name('delete');
+    });
+
+    Route::prefix('qualities')->name('qualities.')->controller(QualityController::class)->group(function() {
         Route::get('/', 'index')->name('index');
 
         Route::prefix('create')->name('create')->group(function() {

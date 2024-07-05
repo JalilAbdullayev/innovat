@@ -104,6 +104,26 @@
                         </li>
                     </ul>
                 </li>
+                <li>
+                    <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false">
+                        <i class="mdi mdi-star"></i>
+                        <span class="hide-menu">
+                            Keyfiyyətlər
+                        </span>
+                    </a>
+                    <ul aria-expanded="false" class="collapse">
+                        <li>
+                            <a href="{{ route('admin.qualities.index') }}">
+                                Keyfiyyətlər
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('admin.qualities.create') }}">
+                                Yeni Keyfiyyət
+                            </a>
+                        </li>
+                    </ul>
+                </li>
             </ul>
         </nav>
         <!-- End Sidebar navigation -->
