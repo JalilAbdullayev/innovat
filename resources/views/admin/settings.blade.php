@@ -86,7 +86,7 @@
                     Loqo
                 </label>
                 <input type="file" name="logo" id="logo" class="dropify" data-show-remove="false"
-                       accept="image/jpeg, image/png, image/jpg, image/gif, image/svg"
+                       accept="image/jpeg, image/png, image/jpg, image/gif, image/svg+xml"
                        data-default-file="{{ Storage::url($settings->logo) }}"/>
             </div>
             @error('logo')
