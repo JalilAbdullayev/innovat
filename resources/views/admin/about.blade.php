@@ -42,13 +42,13 @@
 			<div class="alert alert-danger">{{ $message }}</div>
 			@enderror
 			<div class="mb-3">
-				<label for="about" class="form-label text-white-50">
+				<label for="text" class="form-label text-white-50">
 					Mətn
 				</label>
-				<textarea class="form-control" name="about" id="about" required
-						  placeholder="Mətn">{!! $about->about !!}</textarea>
+				<textarea class="form-control" name="text" id="text" required
+						  placeholder="Mətn">{!! $about->text !!}</textarea>
 			</div>
-			@error('about')
+			@error('text')
 			<div class="alert alert-danger">{{ $message }}</div>
 			@enderror
 			<div class="mb-3">
@@ -57,7 +57,7 @@
 				</label>
 				<input type="file" name="image" id="image" class="dropify" data-show-remove="false"
 					   accept="image/jpeg, image/png, image/jpg, image/gif, image/svg"
-					   data-default-file="{{ asset('storage/'. $about->image) }}"/>
+					   data-default-file="{{ Storage::url($about->image) }}"/>
 			</div>
 			@error('image')
 			<div class="alert alert-danger">{{ $message }}</div>
@@ -76,7 +76,7 @@
         $(document).ready(function() {
             $('.dropify').dropify();
         });
-        const about = CKEDITOR.replace('about', {
+        const text = CKEDITOR.replace('text', {
             extraAllowedContent: 'div',
             height: 150,
             filebrowserImageBrowseUrl: '/admin/laravel-filemanager?type=Images',

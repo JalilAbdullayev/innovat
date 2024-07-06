@@ -2,9 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\AboutRequest;
+use App\Http\Requests\CustomRequest;
 use App\Models\About;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
@@ -14,7 +13,7 @@ class AboutController extends Controller {
         return view('admin.about', compact('about'));
     }
 
-    public function update(AboutRequest $request) {
+    public function update(CustomRequest $request) {
         $about = About::firstOrFail();
         if($request->file('image')) {
             if($request->image) {
@@ -29,7 +28,7 @@ class AboutController extends Controller {
             $about->image = 'images/' . $fileOriginalName;
         }
         $about->title = $request->title;
-        $about->about = $request->about;
+        $about->text = $request->text;
         $about->save();
         return redirect()->back();
     }

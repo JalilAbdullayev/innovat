@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\ServiceQualityRequest;
+use App\Http\Requests\CustomRequest;
 use App\Models\Quality;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Redirect;
@@ -21,7 +21,7 @@ class QualityController extends Controller {
         return View::make('admin.qualities.create');
     }
 
-    public function store(ServiceQualityRequest $request): RedirectResponse {
+    public function store(CustomRequest $request): RedirectResponse {
         $quality = new Quality;
         $quality->title = $request->title;
         $quality->text = $request->text;
@@ -43,7 +43,7 @@ class QualityController extends Controller {
         return View::make('admin.qualities.edit', compact('quality'));
     }
 
-    public function update(int $id, ServiceQualityRequest $request): RedirectResponse {
+    public function update(int $id, CustomRequest $request): RedirectResponse {
         $quality = Quality::findOrFail($id);
         $quality->title = $request->title;
         $quality->text = $request->text;

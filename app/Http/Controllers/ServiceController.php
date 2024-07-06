@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\ServiceQualityRequest;
+use App\Http\Requests\CustomRequest;
 use App\Models\Service;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -22,7 +22,7 @@ class ServiceController extends Controller {
         return View::make('admin.services.create');
     }
 
-    public function store(ServiceQualityRequest $request): RedirectResponse {
+    public function store(CustomRequest $request): RedirectResponse {
         $service = new Service;
         $service->title = $request->title;
         $service->text = $request->text;
@@ -44,7 +44,7 @@ class ServiceController extends Controller {
         return View::make('admin.services.edit', compact('service'));
     }
 
-    public function update(int $id, ServiceQualityRequest $request): RedirectResponse {
+    public function update(int $id, CustomRequest $request): RedirectResponse {
         $service = Service::findOrFail($id);
         $service->title = $request->title;
         $service->text = $request->text;

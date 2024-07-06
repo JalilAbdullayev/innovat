@@ -4,6 +4,7 @@ use App\Http\Controllers\AboutController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\FrontController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\MessageController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\QualityController;
 use App\Http\Controllers\ServiceController;
@@ -79,6 +80,12 @@ Route::prefix('admin')->name('admin.')->middleware('auth')->group(function() {
             Route::post('/', 'update');
         });
 
+        Route::get('delete/{id}', 'delete')->name('delete');
+    });
+
+    Route::prefix('messages')->name('messages.')->controller(MessageController::class)->group(function() {
+        Route::get('/', 'index')->name('index');
+        Route::get('message/{id}', 'show')->name('show');
         Route::get('delete/{id}', 'delete')->name('delete');
     });
 
