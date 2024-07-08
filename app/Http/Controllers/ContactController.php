@@ -12,7 +12,6 @@ class ContactController extends Controller {
 
     public function update(ContactRequest $request) {
         Contact::firstOrFail()->update([
-            'work_hours' => $request->work_hours,
             'phone' => $request->phone,
             'email' => $request->email,
             'address' => $request->address,

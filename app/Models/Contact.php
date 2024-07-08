@@ -9,12 +9,8 @@ class Contact extends Model {
     protected $primaryKey = 'id';
 
     protected $fillable = [
-        'work_hours',
         'address',
         'phone',
         'email',
-        'facebook',
-        'instagram',
-        'whatsapp',
     ];
 }

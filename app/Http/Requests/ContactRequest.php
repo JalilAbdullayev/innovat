@@ -23,8 +23,7 @@ class ContactRequest extends FormRequest {
         return [
             'phone' => 'required|max:20',
             'email' => $rule,
-            'address' => $rule,
-            'work_hours' => $rule
+            'address' => $rule
         ];
     }
 
@@ -35,7 +34,6 @@ class ContactRequest extends FormRequest {
             'phone.required' => 'Telefon' . $required,
             'email.required' => 'E-mail' . $required,
             'address.required' => 'Ünvan' . $required,
-            'work_hours.required' => 'İş saatları' . $required,
             'phone.max' => 'Telefon' . $max,
             'email.max' => 'E-mail' . $max,
             'address.max' => 'Ünvan' . $max,

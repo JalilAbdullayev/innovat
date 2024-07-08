@@ -1,9 +1,5 @@
 @extends('admin.layouts.master')
 @section('title', 'Əlaqə')
-@section('css')
-    @vite(['public/back/ckeditor/samples/css/samples.css',
-    'public/back/ckeditor/samples/toolbarconfigurator/lib/codemirror/neo.css'])
-@endsection
 @section('content')
     <!-- Bread crumb -->
     <div class="row page-titles">
@@ -61,34 +57,9 @@
             @error('address')
             <div class="alert alert-danger">{{ $message }}</div>
             @enderror
-            <div class="mb-3">
-                <label for="work_hours" class="form-label text-white-50">
-                    İş saatları
-                </label>
-                <textarea class="form-control" name="work_hours" id="work_hours" required maxlength="255"
-                          placeholder="İş saatları">{!! $contact->work_hours !!}</textarea>
-            </div>
-            @error('work_hours')
-            <div class="alert alert-danger">{{ $message }}</div>
-            @enderror
             <button type="submit" class="btn w-100 btn-primary text-white">
                 Yadda saxla
             </button>
         </div>
     </form>
-@endsection
-@section('js')
-    <script src="{{ asset('back/ckeditor/ckeditor.js') }}"></script>
-    <script src="{{ asset('back/ckeditor/samples/js/sample.js') }}"></script>
-    <script>
-        const about = CKEDITOR.replace('work_hours', {
-            extraAllowedContent: 'div',
-            height: 150,
-            filebrowserImageBrowseUrl: '/admin/laravel-filemanager?type=Images',
-            filebrowserImageUploadUrl: '/admin/laravel-filemanager/upload?type=Images&_token={{ csrf_token() }}',
-            filebrowserBrowseUrl: '/admin/laravel-filemanager?type=Files',
-            filebrowserUploadUrl: '/admin/laravel-filemanager/upload?type=Files&_token={{ csrf_token() }}',
-            filebrowserUploadMethod: 'form'
-        });
-    </script>
 @endsection
