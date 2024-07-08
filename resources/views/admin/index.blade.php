@@ -1,5 +1,5 @@
 @extends('admin.layouts.master')
-@section('title', 'Home')
+@section('title', 'Ana Səhifə')
 @section('content')
     <!-- ============================================================== -->
     <!-- Bread crumb and right sidebar toggle -->
@@ -14,7 +14,7 @@
             <div class="d-flex justify-content-end align-items-center">
                 <ol class="breadcrumb justify-content-end">
                     <li class="breadcrumb-item active">
-                        Home
+                        @yield('title')
                     </li>
                 </ol>
             </div>
