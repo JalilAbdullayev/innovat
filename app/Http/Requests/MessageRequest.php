@@ -23,6 +23,7 @@ class MessageRequest extends FormRequest {
         return [
             'name' => $rule,
             'email' => $rule,
+            'phone' => 'required|max:20',
             'subject' => $rule,
             'message' => 'required'
         ];
@@ -34,6 +35,8 @@ class MessageRequest extends FormRequest {
         return [
             'name.required' => 'Ad' . $required,
             'email.required' => 'E-mail' . $required,
+            'phone.required' => 'Telefon nömrəniz' . $required,
+            'phone.max' => 'Telefon nömrənizin' . $max,
             'subject.required' => 'Mövzu' . $required,
             'message.required' => 'Mesaj' . $required,
             'name.max' => 'Ad' . $max,

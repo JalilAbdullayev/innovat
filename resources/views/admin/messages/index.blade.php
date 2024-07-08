@@ -40,6 +40,9 @@
 					Ad
 				</th>
 				<th>
+					Telefon
+				</th>
+				<th>
 					E-mail
 				</th>
 				<th>
@@ -55,6 +58,9 @@
 				<tr id="{{ $item->id }}">
 					<td>
 						{{ $item->name }}
+					</td>
+					<td>
+						{{ $item->phone }}
 					</td>
 					<td>
 						{{ $item->email }}

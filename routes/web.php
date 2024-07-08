@@ -18,6 +18,8 @@ Route::controller(FrontController::class)->group(function() {
     Route::get('/', 'index')->name('home');
 });
 
+Route::post('sendMessage', [MessageController::class, 'store'])->name('sendMessage');
+
 Route::prefix('admin')->name('admin.')->middleware('auth')->group(function() {
     Route::get('/', [HomeController::class, 'index'])->name('index');
     Route::prefix('settings')->name('settings')->controller(SettingsController::class)->group(function() {
