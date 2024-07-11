@@ -25,6 +25,7 @@
             display: none;
         }
     </style>
+    @yield('css')
 </head>
 <body class="index-five">
 <!-- header three area start -->
@@ -37,27 +38,22 @@
             <nav class="navigation">
                 <ul class="parent-ul">
                     <li class="has-dropdown with-megamenu">
-                        <a class="nav-link" href="#home">
+                        <a class="nav-link" href="{{ route('home') }}">
                             Ana Səhifə
                         </a>
                     </li>
                     <li>
-                        <a class="nav-link" href="#about">
+                        <a class="nav-link" href="{{ route('about') }}">
                             Haqqımızda
                         </a>
                     </li>
                     <li>
-                        <a class="nav-link" href="#service">
+                        <a class="nav-link" href="{{ route('services') }}">
                             Xidmətlərimiz
                         </a>
                     </li>
                     <li>
-                        <a class="nav-link" href="#quality">
-                            Keyfiyyətlərimiz
-                        </a>
-                    </li>
-                    <li>
-                        <a class="nav-link" href="#get-contact">
+                        <a class="nav-link" href="{{ route('contact') }}">
                             Əlaqə
                         </a>
                     </li>
@@ -193,27 +189,22 @@
         <nav class="nav-main mainmenu-nav mt--30">
             <ul class="mainmenu metismenu" id="mobile-menu-active">
                 <li>
-                    <a href="#" class="main">
+                    <a href="{{ route('home') }}" class="main">
                         Ana səhifə
                     </a>
                 </li>
                 <li>
-                    <a class="main" href="#about">
+                    <a class="main" href="{{ route('about') }}">
                         Haqqımızda
                     </a>
                 </li>
                 <li>
-                    <a class="main" href="#service">
+                    <a class="nav-link" href="{{ route('services') }}">
                         Xidmətlərimiz
                     </a>
                 </li>
                 <li>
-                    <a class="main" href="#quality">
-                        Keyfiyyətlərimiz
-                    </a>
-                </li>
-                <li>
-                    <a class="main" href="#get-contact">
+                    <a class="nav-link" href="{{ route('contact') }}">
                         Əlaqə
                     </a>
                 </li>

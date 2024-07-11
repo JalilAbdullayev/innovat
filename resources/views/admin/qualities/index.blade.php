@@ -59,7 +59,7 @@
 						{{ $item->title }}
 					</td>
 					<td>
-						<img src="{{ Storage::url($item->image) }}" alt=""/>
+						<img src="{{ asset(Storage::url($item->image)) }}" alt="" class="w-25"/>
 					</td>
 					<td>
 						<a href="{{ route('admin.qualities.edit', $item->id) }}" class="btn btn-outline-warning">

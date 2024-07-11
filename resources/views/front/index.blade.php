@@ -27,18 +27,15 @@
             <div class="row">
                 <div class="col-lg-5">
                     <div class="thumbnail-about-five">
-                        <img src="{{ Storage::url($about->image) }}" alt="about">
+                        <h2 class="title">
+                            Welcome to {{ $settings->title }}
+                        </h2>
                     </div>
                 </div>
                 <div class="col-lg-5">
                     <div class="about-right-inner-five rts-slide-up">
-                        <div class="title-area-style-five-left">
-                            <h2 class="title">
-                                {{ $about->title }}
-                            </h2>
-                        </div>
                         <p class="disc-1">
-                            {!! $about->text !!}
+                            {{ $settings->description }}
                         </p>
                     </div>
                 </div>
@@ -69,17 +66,21 @@
                         <!-- single-service staert -->
                         <div class="single-service-style-five">
                             <div class="icon-area">
-                                <img src="{{ Storage::url($service->image) }}" alt="" class="position-relative"
+                                <img src="{{ asset(Storage::url($service->image)) }}" alt="" class="position-relative"
                                      style="z-index: 10"/>
                             </div>
                             <div class="body">
-                                <a>
+                                <a href="{{ route('service', $service->slug) }}">
                                     <h6 class="title">
                                         {{ $service->title }}
                                     </h6>
                                 </a>
                                 <p class="disc">
-                                    {!! $service->text !!}
+                                    @if($service->description)
+                                        {{ $service->description }}
+                                    @else
+                                        {!! Str::limit($service->text) !!}
+                                    @endif
                                 </p>
                             </div>
                         </div>
@@ -112,14 +113,19 @@
                                 <style>
                                     .single-working-prcess-one .inner-{{ $index }}::after {
                                         background-image: url("{{ asset(Storage::url($quality->image)) }}");
+                                        background-position: center;
                                     }
                                 </style>
                                 <span>0{{ $index + 1 }}</span>
-                                <h4 class="title">
+                                <a href="{{ route('quality', $quality->slug) }}" class="title">
                                     {{ $quality->title }}
-                                </h4>
+                                </a>
                                 <p class="disc">
-                                    {!! $quality->text !!}
+                                    @if($quality->description)
+                                        {{ $quality->description }}
+                                    @else
+                                        {!! Str::limit($quality->text) !!}
+                                    @endif
                                 </p>
                             </div>
                         </div>
@@ -130,58 +136,4 @@
         </div>
     </div>
     <!-- our woring process area end -->
-
-    <!-- contact onepage -->
-    <div class="contact-onepage" id="get-contact">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="rts-about-right-area-eight bottom-1 rts-section-separator-right">
-                        <div class="title-style-left mb--30">
-                            <h3 class="title animated fadeIn">
-                                Bizimlə Əlaqə
-                            </h3>
-                        </div>
-                        <form action="{{ route('sendMessage') }}" method="POST" class="form-8">
-                            @csrf
-                            <input type="text" name="name" placeholder="Adınız" required maxlength="255"/>
-                            @error('name')
-                            <div class="alert alert-danger">
-                                {{ $message }}
-                            </div>
-                            @enderror
-                            <input type="tel" name="phone" placeholder="Telefon nömrəniz" required maxlength="20"/>
-                            @error('phone')
-                            <div class="alert alert-danger">
-                                {{ $message }}
-                            </div>
-                            @enderror
-                            <input type="email" name="email" placeholder="E-mailiniz" required maxlength="255"/>
-                            @error('email')
-                            <div class="alert alert-danger">
-                                {{ $message }}
-                            </div>
-                            @enderror
-                            <input type="text" name="subject" placeholder="Mövzu" maxlength="255"/>
-                            @error('subject')
-                            <div class="alert alert-danger">
-                                {{ $message }}
-                            </div>
-                            @enderror
-                            <textarea name="message" placeholder="Mesajınız" required></textarea>
-                            @error('message')
-                            <div class="alert alert-danger">
-                                {{ $message }}
-                            </div>
-                            @enderror
-                            <button type="submit" class="rts-btn btn-border">
-                                Göndər
-                            </button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- contact onepage end -->
 @endsection

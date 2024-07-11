@@ -13,7 +13,13 @@ export default defineConfig({
                 'public/back/ckeditor/samples/css/samples.css',
                 'public/back/ckeditor/samples/toolbarconfigurator/lib/codemirror/neo.css',
                 "public/back/node_modules/datatables.net-bs4/css/dataTables.bootstrap4.css",
-                "public/back/node_modules/datatables.net-bs4/css/responsive.dataTables.min.css"
+                "public/back/node_modules/datatables.net-bs4/css/responsive.dataTables.min.css",
+                "public/front/css/plugins/fontawesome-6.css",
+                "public/front/css/plugins/swiper.min.css",
+                "public/front/css/vendor/magnific-popup.css",
+                "public/front/css/vendor/bootstrap.min.css",
+                "public/front/css/vendor/metismenu.css",
+                "public/front/css/style.css"
             ],
             refresh: true,
         }),

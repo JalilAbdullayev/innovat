@@ -16,6 +16,11 @@ use UniSharp\LaravelFilemanager\Lfm;
 
 Route::controller(FrontController::class)->group(function() {
     Route::get('/', 'index')->name('home');
+    Route::get('services', 'services')->name('services');
+    Route::get('service/{slug}', 'service')->name('service');
+    Route::get('quality/{slug}', 'quality')->name('quality');
+    Route::get('contact', 'contact')->name('contact');
+    Route::get('about', 'about')->name('about');
 });
 
 Route::post('sendMessage', [MessageController::class, 'store'])->name('sendMessage');

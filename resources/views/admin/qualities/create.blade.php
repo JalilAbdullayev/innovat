@@ -50,6 +50,26 @@
             @error('title')
             <div class="alert alert-danger">{{ $message }}</div>
             @enderror
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" name="keywords" id="keywords" placeholder="Açar sözlər"
+                       maxlength="255"/>
+                <label for="keywords" class="form-label text-white-50">
+                    Açar sözlər
+                </label>
+            </div>
+            @error('keywords')
+            <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" name="description" id="description" placeholder="Açıqlama"
+                       maxlength="255"/>
+                <label for="description" class="form-label text-white-50">
+                    Açıqlama
+                </label>
+            </div>
+            @error('description')
+            <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
             <div class="mb-3">
                 <label for="text" class="form-label text-white-50">
                     Mətn

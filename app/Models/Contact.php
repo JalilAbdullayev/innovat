@@ -12,5 +12,6 @@ class Contact extends Model {
         'address',
         'phone',
         'email',
+        'map'
     ];
 }

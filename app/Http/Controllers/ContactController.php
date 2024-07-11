@@ -15,6 +15,7 @@ class ContactController extends Controller {
             'phone' => $request->phone,
             'email' => $request->email,
             'address' => $request->address,
+            'map' => $request->map
         ]);
         return redirect()->back();
     }

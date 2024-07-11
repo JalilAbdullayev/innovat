@@ -57,7 +57,7 @@
 				</label>
 				<input type="file" name="image" id="image" class="dropify" data-show-remove="false"
 					   accept="image/jpeg, image/png, image/jpg, image/gif, image/svg"
-					   data-default-file="{{ Storage::url($about->image) }}"/>
+					   data-default-file="{{ asset(Storage::url($about->image)) }}"/>
 			</div>
 			@error('image')
 			<div class="alert alert-danger">{{ $message }}</div>

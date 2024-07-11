@@ -24,6 +24,9 @@ class QualityController extends Controller {
     public function store(CustomRequest $request): RedirectResponse {
         $quality = new Quality;
         $quality->title = $request->title;
+        $quality->slug = Str::slug($request->title);
+        $quality->description = $request->description;
+        $quality->keywords = $request->keywords;
         $quality->text = $request->text;
         if($request->file('image')) {
             $file = $request->file('image');
@@ -46,6 +49,9 @@ class QualityController extends Controller {
     public function update(int $id, CustomRequest $request): RedirectResponse {
         $quality = Quality::findOrFail($id);
         $quality->title = $request->title;
+        $quality->slug = Str::slug($request->title);
+        $quality->description = $request->description;
+        $quality->keywords = $request->keywords;
         $quality->text = $request->text;
         if($request->file('image')) {
             if($quality->image) {

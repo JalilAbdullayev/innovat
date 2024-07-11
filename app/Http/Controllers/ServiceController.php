@@ -25,6 +25,9 @@ class ServiceController extends Controller {
     public function store(CustomRequest $request): RedirectResponse {
         $service = new Service;
         $service->title = $request->title;
+        $service->slug = Str::slug($request->title);
+        $service->description = $request->description;
+        $service->keywords = $request->keywords;
         $service->text = $request->text;
         if($request->file('image')) {
             $file = $request->file('image');
@@ -47,6 +50,9 @@ class ServiceController extends Controller {
     public function update(int $id, CustomRequest $request): RedirectResponse {
         $service = Service::findOrFail($id);
         $service->title = $request->title;
+        $service->slug = Str::slug($request->title);
+        $service->description = $request->description;
+        $service->keywords = $request->keywords;
         $service->text = $request->text;
         if($request->file('image')) {
             if($service->image) {

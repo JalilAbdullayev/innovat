@@ -1,5 +1,12 @@
 @extends('admin.layouts.master')
 @section('title', 'Əlaqə')
+@section('css')
+    <style>
+        textarea {
+            height: 10rem !important;
+        }
+    </style>
+@endsection
 @section('content')
     <!-- Bread crumb -->
     <div class="row page-titles">
@@ -55,6 +62,16 @@
                 </label>
             </div>
             @error('address')
+            <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
+            <div class="form-floating mb-3">
+                <textarea class="form-control d-inline-block" name="map" id="map" placeholder="Xəritə"
+                          required>{!! $contact->map !!}</textarea>
+                <label for="map" class="form-label text-white-50">
+                    Xəritə
+                </label>
+            </div>
+            @error('map')
             <div class="alert alert-danger">{{ $message }}</div>
             @enderror
             <button type="submit" class="btn w-100 btn-primary text-white">

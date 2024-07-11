@@ -28,8 +28,8 @@
 					</li>
 				</ol>
 				<a href="{{ route('admin.services.create') }}"
-				   class="btn btn-primary d-none d-lg-block m-l-15 text-white"><i
-							class="ti-plus"></i> Yeni Xidmət
+				   class="btn btn-primary d-none d-lg-block m-l-15 text-white">
+                    <i class="ti-plus"></i> Yeni Xidmət
 				</a>
 			</div>
 		</div>
@@ -59,7 +59,7 @@
 						{{ $item->title }}
 					</td>
 					<td>
-                        <img src="{{ Storage::url($item->image) }}" alt=""/>
+                        <img src="{{ asset(Storage::url($item->image)) }}" alt="" class="w-25"/>
 					</td>
 					<td>
 						<a href="{{ route('admin.services.edit', $item->id) }}" class="btn btn-outline-warning">

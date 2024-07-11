@@ -9,12 +9,10 @@ return new class extends Migration {
      * Run the migrations.
      */
     public function up(): void {
-        Schema::create('services', function(Blueprint $table) {
-            $table->id();
-            $table->string('title');
-            $table->text('text')->nullable();
-            $table->string('image');
-            $table->timestamps();
+        Schema::table('qualities', function(Blueprint $table) {
+            $table->string('keywords')->after('title')->nullable();
+            $table->string('description')->after('title')->nullable();
+            $table->string('slug')->after('title');
         });
     }
 
@@ -22,6 +20,8 @@ return new class extends Migration {
      * Reverse the migrations.
      */
     public function down(): void {
-        Schema::dropIfExists('services');
+        Schema::table('qualities', function(Blueprint $table) {
+            //
+        });
     }
 };
