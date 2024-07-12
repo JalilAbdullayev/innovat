@@ -40,7 +40,10 @@ Route::prefix('admin')->name('admin.')->middleware('auth')->group(function() {
 
     Route::prefix('users')->name('users.')->controller(UserController::class)->group(function() {
         Route::get('/', 'index')->name('index');
-        Route::get('create', 'create')->name('create');
+        Route::prefix('create')->name('create')->group(function() {
+            Route::get('/', 'create');
+            Route::post('/', 'store');
+        });
         Route::prefix('edit/{id}')->name('edit')->group(function() {
             Route::get('/', 'edit');
             Route::post('/', 'update');

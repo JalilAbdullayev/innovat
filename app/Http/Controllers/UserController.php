@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ProfileUpdateRequest;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -17,6 +18,19 @@ class UserController extends Controller {
 
     public function create(): Viewable {
         return View::make('admin.users.create');
+    }
+
+    public function store(ProfileUpdateRequest $request) {
+        $user = new User;
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = bcrypt($request->password);
+        if($request->password === $request->password_confirmation) {
+            $user->save();
+            return redirect()->route('admin.users.index');
+        }
+
+        return redirect()->back()->with('error', 'Şifrələr uyğun deyil.');
     }
 
     public function edit(int $id) {

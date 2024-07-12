@@ -56,22 +56,6 @@
             @error('email')
             <div class="alert alert-danger">{{ $message }}</div>
             @enderror
-            <div class="mb-3">
-                <label for="role" class="form-label text-white-50">
-                    Admin
-                </label>
-                <select class="form-control" name="role" id="role">
-                    <option value="0" @if($user->role == 0) selected @endif>
-                        Admin
-                    </option>
-                    <option value="1" @if($user->role == 1) selected @endif>
-                        Moderator
-                    </option>
-                    <option value="2" @if($user->role == 2) selected @endif>
-                        Müştəri
-                    </option>
-                </select>
-            </div>
             <button type="submit" class="btn w-100 btn-primary text-white">
                 Saxla
             </button>

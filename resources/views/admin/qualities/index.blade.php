@@ -27,7 +27,7 @@
 						@yield('title')
 					</li>
 				</ol>
-				<a href="{{ route('admin.services.create') }}"
+				<a href="{{ route('admin.qualities.create') }}"
 				   class="btn btn-primary d-none d-lg-block m-l-15 text-white"><i
 							class="ti-plus"></i> Yeni Keyfiyyət
 				</a>
