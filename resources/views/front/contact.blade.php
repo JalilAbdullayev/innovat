@@ -46,15 +46,14 @@
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <form action="{{ route('sendMessage') }}" method="POST" class="contact-form-conatct-page">
-                        @include('front.components.form')
-                    </form>
+                    @include('front.components.form', ['class' => 'contact-form-conatct-page'])
                 </div>
                 <div class="text-center">
                     <p class="fs-3">
                         {{ $contact->address }}
                     </p>
-                    <a class="d-block text-decoration-underline" href="tel:{{ preg_replace('/\s+/','', $contact->phone) }}">
+                    <a class="d-block text-decoration-underline"
+                       href="tel:{{ preg_replace('/\s+/','', $contact->phone) }}">
                         {{ $contact->phone }}
                     </a>
                     <a class="d-block text-decoration-underline" href="mailto:{{ $contact->email }}">

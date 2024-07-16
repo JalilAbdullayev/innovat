@@ -63,11 +63,10 @@
             <div class="row mt--20 mt_sm--0 g-5 rts-slide-up">
                 @foreach($services as $service)
                     <div class="col-lg-3 col-md-4 col-sm-6 col-12">
-                        <!-- single-service staert -->
-                        <div class="single-service-style-five">
-                            <div class="icon-area">
-                                <img src="{{ asset(Storage::url($service->image)) }}" alt="" class="position-relative"
-                                     style="z-index: 10"/>
+                        <!-- single-service start -->
+                        <div class="single-service-style-five d-flex justify-content-end flex-column h-100">
+                            <div class="icon-area h-auto">
+                                <img src="{{ asset(Storage::url($service->image)) }}" alt=""/>
                             </div>
                             <div class="body">
                                 <a href="{{ route('service', $service->slug) }}">
@@ -79,7 +78,7 @@
                                     @if($service->description)
                                         {{ $service->description }}
                                     @else
-                                        {!! Str::limit($service->text) !!}
+                                        {!! Str::limit($service->text, 90) !!}
                                     @endif
                                 </p>
                             </div>
@@ -114,6 +113,26 @@
                                     .single-working-prcess-one .inner-{{ $index }}::after {
                                         background-image: url("{{ asset(Storage::url($quality->image)) }}");
                                         background-position: center;
+                                    }
+
+                                    .single-working-prcess-one .inner-{{ $index }}::before {
+                                        content: "";
+                                        display: block;
+                                        position: absolute;
+                                        top: 0;
+                                        left: 0;
+                                        width: 100%;
+                                        height: 100%;
+                                        background-color: rgba(255, 255, 255, 0.1);
+                                    }
+
+                                    .inner p {
+                                        color: rgb(0, 0, 0);
+                                        transition: .3s;
+                                    }
+
+                                    .single-working-prcess-one:hover .inner p {
+                                        color: rgba(255, 255, 255);
                                     }
                                 </style>
                                 <span>0{{ $index + 1 }}</span>

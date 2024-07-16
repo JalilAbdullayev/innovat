@@ -1,4 +1,4 @@
-@php use Illuminate\Support\Facades\Storage;use Illuminate\Support\Str;@endphp
+@php use Illuminate\Support\Facades\Route;use Illuminate\Support\Facades\Storage;use Illuminate\Support\Str;@endphp
     <!DOCTYPE html>
 <html lang="{{ Str::replace('-', '_', App::getLocale()) }}">
 <head>
@@ -102,6 +102,11 @@
                                     {{ $contact->email }}
                                 </a>
                             </div>
+                            @unless(Route::is('contact'))
+                                <a href="{{ route('contact') }}" class="btn btn-secondary btn-lg rounded-pill fs-2 p-3">
+                                    Bizimlə Əlaqə
+                                </a>
+                            @endunless
                         </div>
                     </div>
                     <!-- single footer two wozed -->
