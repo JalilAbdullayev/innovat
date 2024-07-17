@@ -5,6 +5,7 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\FrontController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MessageController;
+use App\Http\Controllers\PrivacyController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\QualityController;
 use App\Http\Controllers\ServiceController;
@@ -23,6 +24,7 @@ Route::controller(FrontController::class)->group(function() {
     Route::get('contact', 'contact')->name('contact');
     Route::get('about', 'about')->name('about');
     Route::get('team', 'team')->name('team');
+    Route::get('privacy', 'privacy')->name('privacy');
 });
 
 Route::post('sendMessage', [MessageController::class, 'store'])->name('sendMessage');
@@ -112,6 +114,11 @@ Route::prefix('admin')->name('admin.')->middleware('auth')->group(function() {
             Route::post('/', 'update');
         });
         Route::get('delete/{id}', 'delete')->name('delete');
+    });
+
+    Route::prefix('privacy-policy')->name('privacy')->controller(PrivacyController::class)->group(function() {
+        Route::get('/', 'index');
+        Route::post('/', 'update');
     });
 
     Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function() {

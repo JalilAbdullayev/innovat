@@ -20,7 +20,8 @@ class DatabaseSeeder extends Seeder {
         $this->call([
 //            SettingsSeeder::class,
 //            ContactSeeder::class,
-            AboutSeeder::class
+//            AboutSeeder::class,
+            PrivacySeeder::class
         ]);
     }
 }

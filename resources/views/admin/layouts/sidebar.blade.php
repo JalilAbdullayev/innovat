@@ -152,6 +152,14 @@
                         </li>
                     </ul>
                 </li>
+                <li>
+                    <a class="waves-effect waves-dark" href="{{ route('admin.privacy') }}" aria-expanded="false">
+                        <i class="ti-write"></i>
+                        <span class="hide-menu">
+                            Privacy Policy
+                        </span>
+                    </a>
+                </li>
             </ul>
         </nav>
         <!-- End Sidebar navigation -->

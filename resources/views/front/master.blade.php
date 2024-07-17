@@ -62,6 +62,11 @@
                             Contact
                         </a>
                     </li>
+                    <li>
+                        <a class="nav-link" href="{{ route('privacy') }}">
+                            Privacy Policy
+                        </a>
+                    </li>
                 </ul>
             </nav>
         </div>

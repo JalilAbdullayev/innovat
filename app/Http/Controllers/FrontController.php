@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\About;
+use App\Models\Privacy;
 use App\Models\Quality;
 use App\Models\Service;
 use App\Models\Team;
@@ -17,35 +18,40 @@ class FrontController extends Controller {
         return View::make('front.index', compact('services', 'qualities', 'about'));
     }
 
-    public function services() {
+    public function services(): Viewable {
         $services = Service::all();
         $qualities = Quality::all();
         return View::make('front.services', compact('services', 'qualities'));
     }
 
-    public function service($slug) {
+    public function service($slug): Viewable {
         $item = Service::whereSlug($slug)->firstOrFail();
         $others = Service::where('id', '!=', $item->id)->get();
         return View::make('front.service', compact('item', 'others'));
     }
 
-    public function quality($slug) {
+    public function quality($slug): Viewable {
         $item = Quality::whereSlug($slug)->firstOrFail();
         $others = Quality::where('id', '!=', $item->id)->get();
         return View::make('front.service', compact('item', 'others'));
     }
 
-    public function contact() {
+    public function contact(): Viewable {
         return View::make('front.contact');
     }
 
-    public function about() {
+    public function about(): Viewable {
         $about = About::firstOrFail();
         return View::make('front.about', compact('about'));
     }
 
-    public function team() {
+    public function team(): Viewable {
         $team = Team::all();
         return View::make('front.team', compact('team'));
+    }
+
+    public function privacy(): Viewable {
+        $privacy = Privacy::first();
+        return View::make('front.privacy', compact('privacy'));
     }
 }
