@@ -39,22 +39,27 @@
                 <ul class="parent-ul">
                     <li class="has-dropdown with-megamenu">
                         <a class="nav-link" href="{{ route('home') }}">
-                            Ana Səhifə
+                            Home
                         </a>
                     </li>
                     <li>
                         <a class="nav-link" href="{{ route('about') }}">
-                            Haqqımızda
+                            About Us
                         </a>
                     </li>
                     <li>
                         <a class="nav-link" href="{{ route('services') }}">
-                            Xidmətlərimiz
+                            Services
+                        </a>
+                    </li>
+                    <li>
+                        <a class="nav-link" href="{{ route('team') }}">
+                            Our Team
                         </a>
                     </li>
                     <li>
                         <a class="nav-link" href="{{ route('contact') }}">
-                            Əlaqə
+                            Contact
                         </a>
                     </li>
                 </ul>
@@ -80,8 +85,8 @@
         <div class="ptb--100 ptb_md--60 ptb_sm--50">
             <!-- footer-two wrapper -->
             <div class="footer-two-main-wrapper">
-                <a href="{{ route('home') }}" class="logo d-inline-block mb--30">
-                    <img src="{{ asset(Storage::url($settings->logo)) }}" alt="{{ $settings->title }}"/>
+                <a href="{{ route('home') }}" class="logo d-inline-block mb--30" style="width: 10%">
+                    <img src="{{ asset(Storage::url($settings->logo)) }}" alt="{{ $settings->title }}" class="w-100"/>
                 </a>
                 <div class="footer-two-main-wrapper-right">
                     <!-- single footer two wozed -->

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\About;
 use App\Models\Quality;
 use App\Models\Service;
+use App\Models\Team;
 use Illuminate\Support\Facades\View;
 use Illuminate\View\View as Viewable;
 
@@ -41,5 +42,10 @@ class FrontController extends Controller {
     public function about() {
         $about = About::firstOrFail();
         return View::make('front.about', compact('about'));
+    }
+
+    public function team() {
+        $team = Team::all();
+        return View::make('front.team', compact('team'));
     }
 }

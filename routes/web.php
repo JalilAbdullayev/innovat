@@ -9,6 +9,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\QualityController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\SettingsController;
+use App\Http\Controllers\TeamController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -21,6 +22,7 @@ Route::controller(FrontController::class)->group(function() {
     Route::get('quality/{slug}', 'quality')->name('quality');
     Route::get('contact', 'contact')->name('contact');
     Route::get('about', 'about')->name('about');
+    Route::get('team', 'team')->name('team');
 });
 
 Route::post('sendMessage', [MessageController::class, 'store'])->name('sendMessage');
@@ -96,6 +98,19 @@ Route::prefix('admin')->name('admin.')->middleware('auth')->group(function() {
     Route::prefix('messages')->name('messages.')->controller(MessageController::class)->group(function() {
         Route::get('/', 'index')->name('index');
         Route::get('message/{id}', 'show')->name('show');
+        Route::get('delete/{id}', 'delete')->name('delete');
+    });
+
+    Route::prefix('team')->name('team.')->controller(TeamController::class)->group(function() {
+        Route::get('/', 'index')->name('index');
+        Route::prefix('create')->name('create')->group(function() {
+            Route::get('/', 'create');
+            Route::post('/', 'store');
+        });
+        Route::prefix('edit/{id}')->name('edit')->group(function() {
+            Route::get('/', 'edit');
+            Route::post('/', 'update');
+        });
         Route::get('delete/{id}', 'delete')->name('delete');
     });
 

@@ -37,7 +37,7 @@
 		<nav class="navbar top-navbar navbar-expand-md navbar-dark">
 			<!-- Logo -->
 			<div class="navbar-header d-flex justify-content-center align-items-center">
-				<a class="navbar-brand d-inline-block w-50" href="{{ route('admin.index') }}">
+				<a class="navbar-brand d-inline-block" href="{{ route('admin.index') }}" style="width: 30%">
 					<!-- Light Logo text -->
 					<img src="{{ asset('storage/' . $settings->logo) }}" class="light-logo w-100"
 						 alt="{{ $settings->title }}"/>
