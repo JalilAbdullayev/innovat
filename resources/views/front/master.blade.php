@@ -30,8 +30,8 @@
 <body class="index-five">
 <!-- header three area start -->
 <header class="header-three five header--sticky" style="position: relative;">
-    <a href="{{ route('home') }}" class="logo-area">
-        <img src="{{ asset(Storage::url($settings->logo)) }}" alt="logo"/>
+    <a href="{{ route('home') }}" class="logo-area d-inline-block" style="width: 10%">
+        <img src="{{ asset(Storage::url($settings->logo)) }}" alt="logo" class="w-100"/>
     </a>
     <div class="header-right">
         <div class="nav-area-center">
