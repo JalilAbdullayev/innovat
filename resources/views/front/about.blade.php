@@ -1,5 +1,5 @@
 @extends('front.master')
-@section('title', 'Haqqımızda')
+@section('title', 'About Us')
 @section('css')
     <style>
         .title-style-left img {

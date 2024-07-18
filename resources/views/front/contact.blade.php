@@ -1,5 +1,5 @@
 @extends('front.master')
-@section('title', 'Əlaqə')
+@section('title', 'Contact')
 @section('css')
     <style>
         .bg_image {
@@ -20,15 +20,15 @@
                     <div class="bread-crumb-area-inner">
                         <div class="breadcrumb-top">
                             <a href="{{ route('home') }}">
-                                Ana Səhifə
+                                Home
                             </a> /
                             <span class="active text-white">
-                                Əlaqə
+                                @yield('title')
                             </span>
                         </div>
                         <div class="bottom-title">
                             <h1 class="title">
-                                Əlaqə
+                                @yield('title')
                             </h1>
                         </div>
                     </div>

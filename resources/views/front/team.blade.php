@@ -1,6 +1,6 @@
 @php use Illuminate\Support\Facades\Storage; @endphp
 @extends('front.master')
-@section('title', 'Team')
+@section('title', 'Our Team')
 @section('content')
     <!-- bread croumba rea start -->
     <div class="container">
@@ -9,10 +9,14 @@
                 <div class="bread-crumb-area-inner">
                     <div class="breadcrumb-top">
                         <a href="{{ route('home') }}">Home</a> /
-                        <a class="active" href="#">Our Team</a>
+                        <span class="active">
+                            @yield('title')
+                        </span>
                     </div>
                     <div class="bottom-title">
-                        <h1 class="title">Our Team</h1>
+                        <h1 class="title">
+                            @yield('title')
+                        </h1>
                     </div>
                 </div>
             </div>
@@ -40,9 +44,9 @@
                     <div class="col-lg-3 col-md-4 col-sm-6 col-12">
                         <!-- team area start -->
                         <div class="team-area-start-one">
-                            <a href="#" class="thumbnail">
-                                <img src="{{ asset(Storage::url($member->image)) }}" alt="team_area">
-                            </a>
+                            <span class="thumbnail">
+                                <img src="{{ asset(Storage::url($member->image)) }}" alt="{{ $member->name }}"/>
+                            </span>
                             <div class="team-content">
                                 <div class="name-area">
                                     <h6 class="name text-start">

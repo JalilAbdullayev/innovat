@@ -53,7 +53,7 @@
     <script>
         const text = CKEDITOR.replace('text', {
             extraAllowedContent: 'div',
-            height: 150,
+            height: 300,
             filebrowserImageBrowseUrl: '/admin/laravel-filemanager?type=Images',
             filebrowserImageUploadUrl: '/admin/laravel-filemanager/upload?type=Images&_token={{ csrf_token() }}',
             filebrowserBrowseUrl: '/admin/laravel-filemanager?type=Files',

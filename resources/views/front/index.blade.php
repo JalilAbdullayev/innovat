@@ -1,6 +1,22 @@
 @php use Illuminate\Support\Facades\Storage; @endphp
 @extends('front.master')
-@section('title', 'Ana Səhifə')
+@section('title', 'Home')
+@section('css')
+    <style>
+        .single-working-prcess-one:hover .inner p {
+            color: rgba(255, 255, 255);
+        }
+
+        .inner p {
+            color: rgb(0, 0, 0);
+            transition: .3s;
+        }
+
+        .single-service-style-five h6 {
+            font-size: 19px !important;
+        }
+    </style>
+@endsection
 @section('content')
     <!-- rts banner top-area -->
     <div class="rts-banner-top-area pt--100 pt_sm--50" id="home">
@@ -53,7 +69,7 @@
                         <!-- title-left -->
                         <div class="title-area-style-five-left">
                             <h2 class="title">
-                                Xidmətlərimiz
+                                Services
                             </h2>
                         </div>
                     </div>
@@ -98,7 +114,7 @@
                 <div class="col-lg-12">
                     <div class="title-process-stock-text">
                         <h2 class="stock-text-1 end">
-                            Keyfiyyətlərimiz
+                            Advantages
                         </h2>
                     </div>
                 </div>
@@ -110,29 +126,24 @@
                         <div class="single-working-prcess-one @if($index == 0) active @endif">
                             <div class="inner inner-{{ $index }}">
                                 <style>
-                                    .single-working-prcess-one .inner-{{ $index }}::after {
-                                        background-image: url("{{ asset(Storage::url($quality->image)) }}");
-                                        background-position: center;
-                                    }
+                                    .single-working-prcess-one {
+                                        .inner-{{ $index }}   {
+                                            &::after {
+                                                background-image: url("{{ asset('public'.Storage::url($quality->image)) }}");
+                                                background-position: center;
+                                            }
 
-                                    .single-working-prcess-one .inner-{{ $index }}::before {
-                                        content: "";
-                                        display: block;
-                                        position: absolute;
-                                        top: 0;
-                                        left: 0;
-                                        width: 100%;
-                                        height: 100%;
-                                        background-color: rgba(255, 255, 255, 0.1);
-                                    }
-
-                                    .inner p {
-                                        color: rgb(0, 0, 0);
-                                        transition: .3s;
-                                    }
-
-                                    .single-working-prcess-one:hover .inner p {
-                                        color: rgba(255, 255, 255);
+                                            &::before {
+                                                content: "";
+                                                display: block;
+                                                position: absolute;
+                                                top: 0;
+                                                left: 0;
+                                                width: 100%;
+                                                height: 100%;
+                                                background-color: rgba(255, 255, 255, 0.1);
+                                            }
+                                        }
                                     }
                                 </style>
                                 <span>0{{ $index + 1 }}</span>

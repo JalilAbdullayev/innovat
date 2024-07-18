@@ -1,6 +1,13 @@
 @php use Illuminate\Support\Facades\Storage;use Illuminate\Support\Str; @endphp
 @extends('front.master')
-@section('title', 'Xidmətlərimiz')
+@section('title', 'Services')
+@section('css')
+    <style>
+        .portfolio-grid-col-2-single h5 {
+            font-size: 18px !important;
+        }
+    </style>
+@endsection
 @section('content')
     <!-- bread croumba rea start -->
     <div class="container">
@@ -9,15 +16,15 @@
                 <div class="bread-crumb-area-inner">
                     <div class="breadcrumb-top">
                         <a href="{{ route('home') }}">
-                            Ana Səhifə
+                            Home
                         </a> /
                         <span class="active">
-							Xidmətlərimiz
+							@yield('title')
 						</span>
                     </div>
                     <div class="bottom-title">
                         <h1 class="title">
-                            Xidmətlərimiz
+                            @yield('title')
                         </h1>
                     </div>
                 </div>
@@ -34,8 +41,9 @@
                 @foreach($services as $service)
                     <div class="col-lg-3 col-md-6 col-sm-12 col-12">
                         <!-- single portfolio grid col-2 -->
-                        <div class="portfolio-grid-col-2-single rts-portfolio__item">
-                            <a href="{{ route('service', $service->slug) }}" class="thumbnail">
+                        <div
+                            class="portfolio-grid-col-2-single rts-portfolio__item d-flex justify-content-end flex-column h-100">
+                            <a href="{{ route('service', $service->slug) }}" class="thumbnail h-auto">
                                 <img src="{{ asset(Storage::url($service->image)) }}" alt="{{ $service->title }}"/>
                             </a>
                             <div class="inner-text">
@@ -48,7 +56,7 @@
                                     @if($service->description)
                                         {{ $service->description }}
                                     @else
-                                        {!! Str::limit($service->text) !!}
+                                        {!! Str::limit($service->text, 90) !!}
                                     @endif
                                 </p>
                             </div>
@@ -67,7 +75,7 @@
                 <div class="bread-crumb-area-inner">
                     <div class="bottom-title">
                         <h1 class="title">
-                            Keyfiyyətlərimiz
+                            Advantages
                         </h1>
                     </div>
                 </div>
