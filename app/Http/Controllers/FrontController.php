@@ -26,13 +26,13 @@ class FrontController extends Controller {
 
     public function service($slug): Viewable {
         $item = Service::whereSlug($slug)->firstOrFail();
-        $others = Service::where('id', '!=', $item->id)->get();
+        $others = Service::where('id', '!=', $item->id)->take(3)->inRandomOrder()->get();
         return View::make('front.service', compact('item', 'others'));
     }
 
     public function quality($slug): Viewable {
         $item = Quality::whereSlug($slug)->firstOrFail();
-        $others = Quality::where('id', '!=', $item->id)->get();
+        $others = Quality::where('id', '!=', $item->id)->take(3)->inRandomOrder()->get();
         return View::make('front.service', compact('item', 'others'));
     }
 

@@ -12,7 +12,6 @@ class ContactSeeder extends Seeder {
      */
     public function run(): void {
         Contact::create([
-            'work_hours' => '08:00 - 18:00',
             'address' => 'Baku',
             'phone' => '+994101234567',
             'email' => 'mail@example.com',

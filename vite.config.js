@@ -20,7 +20,8 @@ export default defineConfig({
                 "public/front/css/vendor/bootstrap.min.css",
                 "public/front/css/vendor/metismenu.css",
                 "public/front/css/style.css",
-                "public/back/dist/css/pages/login-register-lock.css"
+                "public/back/dist/css/pages/login-register-lock.css",
+                "public/front/css/custom.scss",
             ],
             refresh: true,
         }),

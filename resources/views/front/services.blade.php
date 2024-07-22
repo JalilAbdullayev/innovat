@@ -88,7 +88,7 @@
     <!-- rts portfoliooa area inner page -->
     <div class="rts-portfolio-grid-col-2 rts-section-gap rts_portfolio_animation-wrapper">
         <div class="container">
-            <div class="row g-80">
+            <div class="row g-80" id="qualities">
                 @foreach($qualities as $quality)
                     <div class="col-md-6 col-sm-12 col-12">
                         <!-- single portfolio grid col-2 -->

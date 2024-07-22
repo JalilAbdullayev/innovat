@@ -1,0 +1,95 @@
+$color-green: #067648;
+$color-light-green: #21A373;
+$color-dark-blue: #262E35;
+
+.single-working-prcess-one::after, .single-working-prcess-one::before, .separetor-process-top::after {
+    display: none;
+}
+
+.loader::after {
+    border-top-color: $color-green;
+}
+
+#contactBtn {
+    background-color: $color-dark-blue;
+    transition: .3s;
+
+    &:hover {
+        background-color: $color-light-green;
+    }
+}
+
+.progress-wrap {
+    &::after {
+        color: $color-light-green;
+    }
+
+    .svg-content path {
+        stroke: $color-green !important;
+    }
+}
+
+.single-service-style-five a h6:hover, .portfolio-grid-col-2-single a h5:hover, ul li a:hover, .contact-call a:hover, .copy-right-area-inner-two a:hover {
+    color: $color-light-green !important;
+}
+
+#qualities {
+    --bs-gutter-y: 0;
+}
+
+.contact-form-conatct-page {
+    input, textarea {
+        &:focus {
+            border-bottom-color: $color-green;
+        }
+    }
+
+    button:hover {
+        border-color: $color-light-green;
+    }
+}
+
+#contact a:hover {
+    color: $color-light-green;
+}
+
+iframe {
+    height: 25rem;
+}
+
+.social-style-two-wrapper li a {
+    margin: 0 1rem;
+
+    &:hover {
+        border-color: $color-light-green;
+    }
+}
+
+.breadcrumb-top {
+    a {
+        margin: 0 .5rem;
+
+        &:hover {
+            color: $color-light-green !important;
+        }
+    }
+
+    span {
+        margin: 0 .5rem;
+    }
+}
+
+.single-working-prcess-one {
+    &:hover .inner p {
+        color: rgba(255, 255, 255);
+    }
+
+    .inner p {
+        color: rgb(0, 0, 0);
+        transition: .3s;
+    }
+}
+
+.single-service-style-five h6 {
+    font-size: 19px !important;
+}

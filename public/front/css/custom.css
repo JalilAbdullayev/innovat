@@ -1,0 +1,76 @@
+.single-working-prcess-one::after, .single-working-prcess-one::before, .separetor-process-top::after {
+  display: none;
+}
+
+.loader::after {
+  border-top-color: #067648;
+}
+
+#contactBtn {
+  background-color: #262E35;
+  transition: 0.3s;
+}
+#contactBtn:hover {
+  background-color: #21A373;
+}
+
+.progress-wrap::after {
+  color: #21A373;
+}
+.progress-wrap .svg-content path {
+  stroke: #067648 !important;
+}
+
+.single-service-style-five a h6:hover, .portfolio-grid-col-2-single a h5:hover, ul li a:hover, .contact-call a:hover, .copy-right-area-inner-two a:hover {
+  color: #21A373 !important;
+}
+
+#qualities {
+  --bs-gutter-y: 0;
+}
+
+.contact-form-conatct-page input:focus, .contact-form-conatct-page textarea:focus {
+  border-bottom-color: #067648;
+}
+.contact-form-conatct-page button:hover {
+  border-color: #21A373;
+}
+
+#contact a:hover {
+  color: #21A373;
+}
+
+iframe {
+  height: 25rem;
+}
+
+.social-style-two-wrapper li a {
+  margin: 0 1rem;
+}
+.social-style-two-wrapper li a:hover {
+  border-color: #21A373;
+}
+
+.breadcrumb-top a {
+  margin: 0 0.5rem;
+}
+.breadcrumb-top a:hover {
+  color: #21A373 !important;
+}
+.breadcrumb-top span {
+  margin: 0 0.5rem;
+}
+
+.single-working-prcess-one:hover .inner p {
+  color: rgb(255, 255, 255);
+}
+.single-working-prcess-one .inner p {
+  color: rgb(0, 0, 0);
+  transition: 0.3s;
+}
+
+.single-service-style-five h6 {
+  font-size: 19px !important;
+}
+
+/*# sourceMappingURL=custom.css.map */

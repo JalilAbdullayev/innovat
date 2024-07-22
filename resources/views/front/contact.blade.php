@@ -19,9 +19,10 @@
                 <div class="col-lg-12">
                     <div class="bread-crumb-area-inner">
                         <div class="breadcrumb-top">
-                            <a href="{{ route('home') }}">
+                            <a href="{{ route('home') }}" class="text-white">
                                 Home
-                            </a> /
+                            </a>
+                            <span class="text-white"> / </span>
                             <span class="active text-white">
                                 @yield('title')
                             </span>
@@ -48,7 +49,7 @@
                 <div class="col-md-6">
                     @include('front.components.form', ['class' => 'contact-form-conatct-page'])
                 </div>
-                <div class="text-center">
+                <div class="text-center" id="contact">
                     <p class="fs-3">
                         {{ $contact->address }}
                     </p>

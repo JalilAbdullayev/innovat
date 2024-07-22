@@ -1,22 +1,6 @@
 @php use Illuminate\Support\Facades\Storage; @endphp
 @extends('front.master')
 @section('title', 'Home')
-@section('css')
-    <style>
-        .single-working-prcess-one:hover .inner p {
-            color: rgba(255, 255, 255);
-        }
-
-        .inner p {
-            color: rgb(0, 0, 0);
-            transition: .3s;
-        }
-
-        .single-service-style-five h6 {
-            font-size: 19px !important;
-        }
-    </style>
-@endsection
 @section('content')
     <!-- rts banner top-area -->
     <div class="rts-banner-top-area pt--100 pt_sm--50" id="home">
@@ -59,7 +43,6 @@
         </div>
     </div>
     <!-- about area end -->
-
     <!-- servce area start -->
     <div class="service-area-start rts-service-area rts-section-gapBottom" id="service">
         <div class="container">
@@ -75,7 +58,6 @@
                     </div>
                 </div>
             </div>
-
             <div class="row mt--20 mt_sm--0 g-5 rts-slide-up">
                 @foreach($services as $service)
                     <div class="col-lg-3 col-md-4 col-sm-6 col-12">
@@ -106,7 +88,6 @@
         </div>
     </div>
     <!-- servce area end -->
-
     <!-- our woring process area start -->
     <div class="our-working-process rts-section-gapBottom" id="quality">
         <div class="container">
@@ -127,7 +108,7 @@
                             <div class="inner inner-{{ $index }}">
                                 <style>
                                     .single-working-prcess-one {
-                                        .inner-{{ $index }}   {
+                                        .inner-{{ $index }}     {
                                             &::after {
                                                 background-image: url("{{ asset('public'.Storage::url($quality->image)) }}");
                                                 background-position: center;
