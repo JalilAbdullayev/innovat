@@ -26,7 +26,8 @@
 </head>
 <body class="index-five">
 <!-- header three area start -->
-<header class="header-three five header--sticky" style="position: relative;">
+<header class="header-three five header--sticky @unless(Route::is('contact')) mb--40 @endunless"
+        style="position: relative;">
     <a href="{{ route('home') }}" class="logo-area d-inline-block" style="width: 7%">
         <img src="{{ asset(Storage::url($settings->logo)) }}" alt="logo" class="w-100"/>
     </a>
@@ -84,7 +85,7 @@
 <!-- rts footer area start -->
 <div class="rts-footer-area bg-light social-jumpanimation">
     <div class="container">
-        <div class="ptb--100 ptb_md--60 ptb_sm--50">
+        <div class="ptb--40 ptb_md--60 ptb_sm--50">
             <!-- footer-two wrapper -->
             <div class="footer-two-main-wrapper">
                 <div class="footer-two-main-wrapper-right">
@@ -106,7 +107,7 @@
                     <div class="single-footer-wized">
                         <div class="location-information">
                             <div class="location">
-                                <h6 class="title">
+                                <h6 class="title text-white">
                                     Contact Us
                                 </h6>
                             </div>
@@ -131,7 +132,7 @@
                     <div class="single-footer-wized">
                         <div class="location-information">
                             <div class="location">
-                                <h6 class="title">
+                                <h6 class="title text-white">
                                     Navigation
                                 </h6>
                             </div>

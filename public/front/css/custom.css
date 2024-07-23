@@ -14,15 +14,8 @@
   background-color: #21A373;
 }
 
-.progress-wrap::after {
-  color: #21A373;
-}
-.progress-wrap .svg-content path {
-  stroke: #067648 !important;
-}
-
-.single-service-style-five a h6:hover, .portfolio-grid-col-2-single a h5:hover, ul li a:hover, .contact-call a:hover, .copy-right-area-inner-two a:hover {
-  color: #21A373 !important;
+.single-service-style-five a h6:hover, .portfolio-grid-col-2-single a h5:hover {
+  color: #262E35 !important;
 }
 
 #qualities {
@@ -36,10 +29,6 @@
   border-color: #21A373;
 }
 
-#contact a:hover {
-  color: #21A373;
-}
-
 iframe {
   height: 25rem;
 }
@@ -48,10 +37,11 @@ iframe {
   margin: 0 1rem;
 }
 .social-style-two-wrapper li a:hover {
-  border-color: #21A373;
+  border-color: #FFF;
 }
 
 .breadcrumb-top a {
+  color: #067648 !important;
   margin: 0 0.5rem;
 }
 .breadcrumb-top a:hover {
@@ -71,6 +61,28 @@ iframe {
 
 .single-service-style-five h6 {
   font-size: 19px !important;
+}
+
+.rts-footer-area {
+  background-color: rgb(6, 140, 72) !important;
+}
+.rts-footer-area a, .rts-footer-area h6, .rts-footer-area p {
+  color: #FFF !important;
+}
+
+header {
+  background-color: rgb(6, 140, 72);
+}
+header a {
+  color: #FFF !important;
+}
+
+.sticky-150 a {
+  color: #21A373 !important;
+}
+
+#contact a:hover {
+  color: #21A373;
 }
 
 /*# sourceMappingURL=custom.css.map */

@@ -8,7 +8,7 @@
                 <div class="bread-crumb-area-inner">
                     <div class="breadcrumb-top">
                         <a href="{{ route('home') }}">Home</a> /
-                        <a class="active" href="#">Privacy Policy</a>
+                        <span class="active">Privacy Policy</span>
                     </div>
                     <div class="bottom-title">
                         <h1 class="title">Privacy Policy</h1>

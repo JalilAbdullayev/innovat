@@ -19,18 +19,8 @@ $color-dark-blue: #262E35;
     }
 }
 
-.progress-wrap {
-    &::after {
-        color: $color-light-green;
-    }
-
-    .svg-content path {
-        stroke: $color-green !important;
-    }
-}
-
-.single-service-style-five a h6:hover, .portfolio-grid-col-2-single a h5:hover, ul li a:hover, .contact-call a:hover, .copy-right-area-inner-two a:hover {
-    color: $color-light-green !important;
+.single-service-style-five a h6:hover, .portfolio-grid-col-2-single a h5:hover {
+    color: $color-dark-blue !important;
 }
 
 #qualities {
@@ -49,10 +39,6 @@ $color-dark-blue: #262E35;
     }
 }
 
-#contact a:hover {
-    color: $color-light-green;
-}
-
 iframe {
     height: 25rem;
 }
@@ -61,12 +47,13 @@ iframe {
     margin: 0 1rem;
 
     &:hover {
-        border-color: $color-light-green;
+        border-color: #FFF;
     }
 }
 
 .breadcrumb-top {
     a {
+        color: $color-green !important;
         margin: 0 .5rem;
 
         &:hover {
@@ -92,4 +79,28 @@ iframe {
 
 .single-service-style-five h6 {
     font-size: 19px !important;
+}
+
+.rts-footer-area {
+    background-color: rgba(6, 140, 72, 1) !important;
+
+    a, h6, p {
+        color: #FFF !important;
+    }
+}
+
+header {
+    background-color: rgba(6, 140, 72, 1);
+
+    a {
+        color: #FFF !important;
+    }
+}
+
+.sticky-150 a {
+    color: $color-light-green !important;
+}
+
+#contact a:hover {
+    color: $color-light-green;
 }

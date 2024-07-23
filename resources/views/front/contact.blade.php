@@ -19,7 +19,7 @@
                 <div class="col-lg-12">
                     <div class="bread-crumb-area-inner">
                         <div class="breadcrumb-top">
-                            <a href="{{ route('home') }}" class="text-white">
+                            <a href="{{ route('home') }}">
                                 Home
                             </a>
                             <span class="text-white"> / </span>

@@ -331,7 +331,7 @@
                 var sliderThumbnail = new Swiper(".swiper-banner-thumb-5", {
                     slidesPerView: 3,
                     speed: 1000,
-                    autoplay: 
+                    autoplay:
                     {
                       delay: 2000,
                     },
@@ -343,10 +343,10 @@
                         mousewheelControl: true,
                         keyboardControl: true,
                     },
-                    
+
                     // effect:"fade",
                     speed: 500,
-                    autoplay: 
+                    autoplay:
                     {
                       delay: 2000,
                     },
@@ -464,7 +464,7 @@
                       el: ".swiper-pagination",
                       clickable: true,
                     },
-                    autoplay: 
+                    autoplay:
                     {
                       delay: 2000,
                     },
@@ -503,7 +503,7 @@
                         nextEl: ".swiper-button-next",
                         prevEl: ".swiper-button-prev",
                     },
-                    autoplay: 
+                    autoplay:
                     {
                       delay: 1500,
                     },
@@ -514,7 +514,7 @@
                 var swiper = new Swiper(".mySwiper-varticle-portfolio", {
                     slidesPerView: 4,
                     spaceBetween: 20,
-                    autoplay: 
+                    autoplay:
                     {
                       delay: 2500,
                     },
@@ -746,9 +746,9 @@
             window.addEventListener("load", function() {
                 $(document).ready(function () {
                     gsap.registerPlugin(ScrollTrigger);
-    
+
                     let revealContainers = document.querySelectorAll(".rts-reveal-one");
-    
+
                     revealContainers.forEach((container) => {
                         let image = container.querySelector(".rts-reveal-image-one");
                         let rts = gsap.timeline({
@@ -759,7 +759,7 @@
                                 end: "top 0%",
                             }
                         });
-    
+
                         rts.set(container, {
                             autoAlpha: 1
                         });
@@ -1009,7 +1009,7 @@
                     resizing = false;
                 //cache jQuery objects
                 var imageComparisonContainers = $('.cd-image-container');
-                //check if the .cd-image-container is in the viewport 
+                //check if the .cd-image-container is in the viewport
                 //if yes, animate it
                 checkPosition(imageComparisonContainers);
                 $(window).on('scroll', function(){
@@ -1020,13 +1020,13 @@
                             : requestAnimationFrame(function(){checkPosition(imageComparisonContainers);});
                     }
                 });
-                
+
                 //make the .cd-handle element draggable and modify .cd-resize-img width according to its position
                 imageComparisonContainers.each(function(){
                     var actual = $(this);
                     drags(actual.find('.cd-handle'), actual.find('.cd-resize-img'), actual, actual.find('.cd-image-label[data-type="original"]'), actual.find('.cd-image-label[data-type="modified"]'));
                 });
-            
+
                 //upadate images label visibility
                 $(window).on('resize', function(){
                     if( !resizing) {
@@ -1036,7 +1036,7 @@
                             : requestAnimationFrame(function(){checkLabel(imageComparisonContainers);});
                     }
                 });
-            
+
                 function checkPosition(container) {
                     container.each(function(){
                         var actualContainer = $(this);
@@ -1044,32 +1044,32 @@
                             actualContainer.addClass('is-visible');
                         }
                     });
-            
+
                     scrolling = false;
                 }
-            
+
                 function checkLabel(container) {
                     container.each(function(){
                         var actual = $(this);
                         updateLabel(actual.find('.cd-image-label[data-type="modified"]'), actual.find('.cd-resize-img'), 'left');
                         updateLabel(actual.find('.cd-image-label[data-type="original"]'), actual.find('.cd-resize-img'), 'right');
                     });
-            
+
                     resizing = false;
                 }
-        
+
                 function drags(dragElement, resizeElement, container, labelContainer, labelResizeElement) {
                     dragElement.on("mousedown vmousedown", function(e) {
                         dragElement.addClass('draggable');
                         resizeElement.addClass('resizable');
-            
+
                         var dragWidth = dragElement.outerWidth(),
                             xPosition = dragElement.offset().left + dragWidth - e.pageX,
                             containerOffset = container.offset().left,
                             containerWidth = container.outerWidth(),
                             minLeft = containerOffset + 10,
                             maxLeft = containerOffset + containerWidth - dragWidth - 10;
-                        
+
                         dragElement.parents().on("mousemove vmousemove", function(e) {
                             if( !dragging) {
                                 dragging =  true;
@@ -1087,30 +1087,30 @@
                         resizeElement.removeClass('resizable');
                     });
                 }
-            
+
                 function animateDraggedHandle(e, xPosition, dragWidth, minLeft, maxLeft, containerOffset, containerWidth, resizeElement, labelContainer, labelResizeElement) {
-                    var leftValue = e.pageX + xPosition - dragWidth;   
+                    var leftValue = e.pageX + xPosition - dragWidth;
                     //constrain the draggable element to move inside his container
                     if(leftValue < minLeft ) {
                         leftValue = minLeft;
                     } else if ( leftValue > maxLeft) {
                         leftValue = maxLeft;
                     }
-            
+
                     var widthValue = (leftValue + dragWidth/2 - containerOffset)*100/containerWidth+'%';
-                    
+
                     $('.draggable').css('left', widthValue).on("mouseup vmouseup", function() {
                         $(this).removeClass('draggable');
                         resizeElement.removeClass('resizable');
                     });
-            
-                    $('.resizable').css('width', widthValue); 
-            
+
+                    $('.resizable').css('width', widthValue);
+
                     updateLabel(labelResizeElement, resizeElement, 'left');
                     updateLabel(labelContainer, resizeElement, 'right');
                     dragging =  false;
                 }
-            
+
                 function updateLabel(label, resizeElement, position) {
                     if(position == 'left') {
                         ( label.offset().left + label.outerWidth() < resizeElement.offset().left + resizeElement.outerWidth() ) ? label.removeClass('is-hidden') : label.addClass('is-hidden') ;
@@ -1125,7 +1125,7 @@
 
             let heading_title = new SplitText(".banner-title-3", { type: "chars" })
             let heading_char = heading_title.chars
-          
+
             rtsHero.from(heading_char, {
               rotate: 20,
               ease: "back.out",
@@ -1135,7 +1135,7 @@
             })
 
         },
-        
+
         preloaderWithBannerActivation: function () {
             function checkAndStartAnimation() {
                 // Check if the class you're looking for exists on the body
@@ -1171,10 +1171,10 @@
                   setTimeout(checkAndStartAnimation, 500);
                 }
               }
-              
+
               // Call the function to start checking for the class
               checkAndStartAnimation();
-      
+
         },
 
         portfolioimgChangeHover_bg: function () {
@@ -1306,7 +1306,7 @@
         backToTopInit: function () {
             $(document).ready(function () {
               "use strict";
-      
+
               var progressPath = document.querySelector('.progress-wrap path');
               var pathLength = progressPath.getTotalLength();
               progressPath.style.transition = progressPath.style.WebkitTransition = 'none';
@@ -1338,30 +1338,30 @@
                 }, duration);
                 return false;
               })
-      
-      
+
+
             });
-      
+
         },
         textTitleAnimation__1: function () {
             if (window.innerWidth > 550) {
-      
+
               const quotes = document.querySelectorAll(".quote");
               const quotes2 = document.querySelectorAll(".quote-2");
-      
+
               function setupSplits() {
                 $(document).ready(function () {
                   $(".split-line").wrap('<div class="split-parent"></div>');
                 });
-      
-      
+
+
                 quotes.forEach(quote => {
-      
+
                   quote.split = new SplitText(quote, {
                     type: "lines,words,chars",
                     linesClass: "split-line"
                   });
-      
+
                   // Set up the anim
                   quote.anim = gsap.from(quote.split.lines, {
                     scrollTrigger: {
@@ -1376,15 +1376,15 @@
                     stagger: 0.2,
                   });
                 });
-      
-      
-      
+
+
+
                 quotes2.forEach(quote2 => {
-      
+
                   quote2.split = new SplitText(quote2, {
                     type: "lines"
                   });
-      
+
                   // Set up the anim
                   quote2.anim = gsap.from(quote2.split.lines, {
                     scrollTrigger: {
@@ -1401,13 +1401,13 @@
                   });
                 });
               }
-      
+
               // ScrollTrigger.addEventListener("refresh", setupSplits);
               setupSplits();
             }
-      
-      
-      
+
+
+
         },
         searchOpton:function(){
             $(document).on('click', '#search', function () {
@@ -1444,7 +1444,7 @@
                     scrub: true,
                 }
             })
-            
+
             gsap.from(".rts-copyright-anim", {
                 y: -500,
                 scrollTrigger: {
@@ -1464,7 +1464,7 @@
                     markers: false
                   }
                 });
-      
+
                 rts_SkewInUp.from(this, {
                   duration: 2,
                   skewY: 2,
@@ -1522,14 +1522,14 @@
         OnePagesmoothScroll: function (e) {
             $(document).on('click', '.onepage a[href^="#"]', function (event) {
                 event.preventDefault();
-            
+
                 $('html, body').animate({
                     scrollTop: $($.attr(this, 'href')).offset().top
                 }, 2000);
             });
             $(document).on('click', 'a.scroll-down', function (event) {
                 event.preventDefault();
-            
+
                 $('html, body').animate({
                     scrollTop: $($.attr(this, 'href')).offset().top
                 }, 2000);
@@ -1538,8 +1538,8 @@
 
         preloader:function(){
             window.addEventListener('load',function(){
-              document.querySelector('body').classList.add("loaded")  
-            });          
+              document.querySelector('body').classList.add("loaded")
+            });
         },
 
 
