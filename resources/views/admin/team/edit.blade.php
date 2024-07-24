@@ -1,7 +1,7 @@
 @extends('admin.layouts.master')
 @section('title', 'Üzv Redaktə')
 @section('css')
-	@vite(["public/back/node_modules/dropify/dist/css/dropify.min.css"])
+    <link rel="stylesheet" href="{{ asset('back/node_modules/dropify/dist/css/dropify.min.css') }}"/>
 @endsection
 @section('content')
 	<!-- ============================================================== -->

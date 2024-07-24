@@ -1,8 +1,8 @@
 @extends('admin.layouts.master')
 @section('title', 'İstifadəçilər')
 @section('css')
-    @vite(["public/back/node_modules/datatables.net-bs4/css/dataTables.bootstrap4.css",
-"public/back/node_modules/datatables.net-bs4/css/responsive.dataTables.min.css"])
+    <link rel="stylesheet" href="{{ asset('back/node_modules/datatables.net-bs4/css/dataTables.bootstrap4.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('back/node_modules/datatables.net-bs4/css/responsive.dataTables.min.css') }}"/>
 @endsection
 @section('content')
     <!-- ============================================================== -->

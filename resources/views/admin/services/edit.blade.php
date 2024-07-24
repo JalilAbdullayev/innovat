@@ -1,8 +1,9 @@
 @extends('admin.layouts.master')
 @section('title', 'Xidmət Redaktə')
 @section('css')
-    @vite(["public/back/node_modules/dropify/dist/css/dropify.min.css",'public/back/ckeditor/samples/css/samples.css',
-    'public/back/ckeditor/samples/toolbarconfigurator/lib/codemirror/neo.css'])
+    <link rel="stylesheet" href="{{ asset('back/node_modules/dropify/dist/css/dropify.min.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('back/ckeditor/samples/css/samples.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('back/ckeditor/samples/toolbarconfigurator/lib/codemirror/neo.css') }}"/>
 @endsection
 @section('content')
     <!-- ============================================================== -->

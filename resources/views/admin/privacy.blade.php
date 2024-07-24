@@ -1,8 +1,8 @@
 @extends('admin.layouts.master')
 @section('title', 'Privacy Policy')
 @section('css')
-    @vite(['public/back/ckeditor/samples/css/samples.css',
-    'public/back/ckeditor/samples/toolbarconfigurator/lib/codemirror/neo.css'])
+    <link rel="stylesheet" href="{{ asset('back/ckeditor/samples/css/samples.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('back/ckeditor/samples/toolbarconfigurator/lib/codemirror/neo.css') }}"/>
 @endsection
 @section('content')
     <!-- Bread crumb -->
