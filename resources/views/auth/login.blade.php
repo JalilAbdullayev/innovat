@@ -11,7 +11,8 @@
     <title>
         Giriş
     </title>
-    @vite(['public/back/dist/css/pages/login-register-lock.css', 'public/back/dist/css/style.min.css'])
+    <link rel="stylesheet" href="{{ asset("back/dist/css/pages/login-register-lock.css") }}"/>
+    <link rel="stylesheet" href="{{ asset("back/dist/css/style.min.css") }}"/>
 </head>
 <body class="skin-default card-no-border">
 <!-- ============================================================== -->

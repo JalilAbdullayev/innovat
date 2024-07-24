@@ -13,15 +13,13 @@
         @yield('title', $settings->title)
     </title>
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset(Storage::url($settings->favicon)) }}"/>
-    @vite([
-    "public/front/css/plugins/fontawesome-6.css",
-"public/front/css/plugins/swiper.min.css",
-"public/front/css/vendor/magnific-popup.css",
-"public/front/css/vendor/bootstrap.min.css",
-"public/front/css/vendor/metismenu.css",
-"public/front/css/style.css",
-"public/front/css/custom.scss",
-])
+    <link rel="stylesheet" href="{{ asset('front/css/plugins/fontawesome-6.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('front/css/plugins/swiper.min.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('front/css/vendor/magnific-popup.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('front/css/vendor/bootstrap.min.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('front/css/vendor/metismenu.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('front/css/style.css') }}"/>
+    @vite(["public/front/css/custom.scss"])
     @yield('css')
 </head>
 <body class="index-five">
