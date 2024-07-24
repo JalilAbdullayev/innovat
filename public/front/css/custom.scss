@@ -20,7 +20,7 @@ $color-dark-blue: #262E35;
 }
 
 .single-service-style-five a h6:hover, .portfolio-grid-col-2-single a h5:hover {
-    color: $color-dark-blue !important;
+    color: $color-green !important;
 }
 
 #qualities {
@@ -72,7 +72,6 @@ iframe {
     }
 
     .inner p {
-        color: rgb(0, 0, 0);
         transition: .3s;
     }
 }
@@ -87,6 +86,10 @@ iframe {
     a, h6, p {
         color: #FFF !important;
     }
+
+    .logo {
+        width: 40% !important;
+    }
 }
 
 header {
@@ -94,6 +97,10 @@ header {
 
     a {
         color: #FFF !important;
+    }
+
+    .logo-area {
+        width: 7% !important;
     }
 }
 
@@ -103,4 +110,40 @@ header {
 
 #contact a:hover {
     color: $color-light-green;
+}
+
+#side-bar i {
+    background-color: $color-green;
+}
+
+.mobile-menu-main a {
+    color: $color-light-green !important;
+}
+
+@media screen and (max-width: 766px) {
+    header .logo-area {
+        width: 10% !important;
+    }
+
+    .rts-footer-area {
+        .footer-two-main-wrapper-right {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .social-style-two-wrapper {
+            justify-content: center;
+        }
+
+        .logo {
+            width: 20% !important;
+        }
+
+        .copy-right-area-inner-two .disc {
+            justify-content: center;
+        }
+    }
 }

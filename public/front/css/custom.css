@@ -15,7 +15,7 @@
 }
 
 .single-service-style-five a h6:hover, .portfolio-grid-col-2-single a h5:hover {
-  color: #262E35 !important;
+  color: #067648 !important;
 }
 
 #qualities {
@@ -55,7 +55,6 @@ iframe {
   color: rgb(255, 255, 255);
 }
 .single-working-prcess-one .inner p {
-  color: rgb(0, 0, 0);
   transition: 0.3s;
 }
 
@@ -69,12 +68,18 @@ iframe {
 .rts-footer-area a, .rts-footer-area h6, .rts-footer-area p {
   color: #FFF !important;
 }
+.rts-footer-area .logo {
+  width: 40% !important;
+}
 
 header {
   background-color: rgb(6, 140, 72);
 }
 header a {
   color: #FFF !important;
+}
+header .logo-area {
+  width: 7% !important;
 }
 
 .sticky-150 a {
@@ -83,6 +88,36 @@ header a {
 
 #contact a:hover {
   color: #21A373;
+}
+
+#side-bar i {
+  background-color: #067648;
+}
+
+.mobile-menu-main a {
+  color: #21A373 !important;
+}
+
+@media screen and (max-width: 766px) {
+  header .logo-area {
+    width: 10% !important;
+  }
+  .rts-footer-area .footer-two-main-wrapper-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  .rts-footer-area .social-style-two-wrapper {
+    justify-content: center;
+  }
+  .rts-footer-area .logo {
+    width: 20% !important;
+  }
+  .rts-footer-area .copy-right-area-inner-two .disc {
+    justify-content: center;
+  }
 }
 
 /*# sourceMappingURL=custom.css.map */

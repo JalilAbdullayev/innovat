@@ -39,7 +39,7 @@
         <div class="container">
             <div class="row g-80">
                 @foreach($services as $service)
-                    <div class="col-lg-3 col-md-6 col-sm-12 col-12">
+                    <div class="col-xl-3 col-lg-4 col-md-6 col-12">
                         <!-- single portfolio grid col-2 -->
                         <div
                             class="portfolio-grid-col-2-single rts-portfolio__item d-flex justify-content-end flex-column h-100">

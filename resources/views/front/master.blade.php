@@ -28,8 +28,8 @@
 <!-- header three area start -->
 <header class="header-three five header--sticky @unless(Route::is('contact')) mb--40 @endunless"
         style="position: relative;">
-    <a href="{{ route('home') }}" class="logo-area d-inline-block" style="width: 7%">
-        <img src="{{ asset(Storage::url($settings->logo)) }}" alt="logo" class="w-100"/>
+    <a href="{{ route('home') }}" class="logo-area d-inline-block">
+        <img src="{{ asset(Storage::url($settings->logo)) }}" alt="logo"/>
     </a>
     <div class="header-right">
         <div class="nav-area-center d-lg-block">
@@ -91,9 +91,8 @@
                 <div class="footer-two-main-wrapper-right">
                     <!-- single footer two wozed -->
                     <div class="single-footer-wized">
-                        <a href="{{ route('home') }}" class="logo d-inline-block mb--30 w-25" style="width: 10%">
-                            <img src="{{ asset(Storage::url($settings->logo)) }}" alt="{{ $settings->title }}"
-                                 class="w-100"/>
+                        <a href="{{ route('home') }}" class="logo d-inline-block mb--30" style="width: 10%">
+                            <img src="{{ asset(Storage::url($settings->logo)) }}" alt="{{ $settings->title }}"/>
                         </a>
                         <!-- social style two -->
                         <ul class="social-style-two-wrapper social-anim">
@@ -197,40 +196,6 @@
 <!-- header style two -->
 <div id="side-bar" class="side-bar header-two">
     <button class="close-icon-menu"><i class="far fa-times"></i></button>
-    <!-- inner menu area desktop start -->
-    <div class="inner-main-wrapper-desk">
-        <div class="thumbnail">
-            <img src="{{ asset(Storage::url($settings->logo)) }}" alt="{{ $settings->title }}"/>
-        </div>
-        <div class="inner-content">
-            <div class="contact-information--sidebar">
-                <h6 class="title">
-                    Contact information
-                </h6>
-                <div class="single-info">
-                    <a href="tel:{{ preg_replace('/\s+/','', $contact->phone) }}">
-                        {{ $contact->phone }}
-                    </a>
-                    <span>
-                        Call us for support
-                    </span>
-                </div>
-                <div class="single-info">
-                    <a href="#">
-                        {{ $contact->address }}
-                    </a>
-                </div>
-                <div class="single-info">
-                    <a href="mailto:{{ $contact->email }}">
-                        {{ $contact->email }}
-                    </a>
-                    <span>
-                        Email us for query
-                    </span>
-                </div>
-            </div>
-        </div>
-    </div>
     <!-- mobile menu area start -->
     <div class="mobile-menu-main">
         <nav class="nav-main mainmenu-nav mt--30">

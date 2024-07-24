@@ -60,7 +60,7 @@
             </div>
             <div class="row mt--20 mt_sm--0 g-5 rts-slide-up">
                 @foreach($services as $service)
-                    <div class="col-lg-3 col-md-4 col-sm-6 col-12">
+                    <div class="col-lg-3 col-md-6 col-12">
                         <!-- single-service start -->
                         <div class="single-service-style-five d-flex justify-content-end flex-column h-100">
                             <div class="icon-area h-auto">
@@ -102,7 +102,7 @@
             </div>
             <div class="row g-5 mt--30 separetor-process-top">
                 @foreach($qualities as $index => $quality)
-                    <div class="col-lg-3 col-md-4 col-sm-12 col-12 pt--50 pt_sm--0 pt_sm--0">
+                    <div class="col-lg-3 col-md-6 col-12 pt--50 pt_sm--0 pt_sm--0">
                         <!-- single working process start -->
                         <div class="single-working-prcess-one @if($index == 0) active @endif">
                             <div class="inner inner-{{ $index }}">
@@ -131,7 +131,7 @@
                                 <a href="{{ route('quality', $quality->slug) }}" class="title">
                                     {{ $quality->title }}
                                 </a>
-                                <p class="disc">
+                                <p class="disc text-black">
                                     @if($quality->description)
                                         {{ $quality->description }}
                                     @else
