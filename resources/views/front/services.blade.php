@@ -15,7 +15,7 @@
             <div class="col-lg-12">
                 <div class="bread-crumb-area-inner">
                     <div class="breadcrumb-top">
-                        <a href="{{ route('home') }}">
+                        <a href="{{ route('home_'.session('locale')) }}">
                             Home
                         </a> /
                         <span class="active">
@@ -43,20 +43,24 @@
                         <!-- single portfolio grid col-2 -->
                         <div
                             class="portfolio-grid-col-2-single rts-portfolio__item d-flex justify-content-end flex-column h-100">
-                            <a href="{{ route('service', $service->slug) }}" class="thumbnail h-auto">
-                                <img src="{{ asset(Storage::url($service->image)) }}" alt="{{ $service->title }}"/>
+                            <a href="{{ route('service_'.session('locale'), $service->translate->first()->slug) }}"
+                               class="thumbnail
+                            h-auto">
+                                <img src="{{ asset(Storage::url($service->translate->first()->image)) }}" alt="{{
+                                $service->translate->first()->title
+                                }}"/>
                             </a>
                             <div class="inner-text">
-                                <a href="{{ route('service', $service->slug) }}">
+                                <a href="{{ route('service_'.session('locale'), $service->translate->first()->slug) }}">
                                     <h5 class="title">
-                                        {{ $service->title }}
+                                        {{ $service->translate->first()->title }}
                                     </h5>
                                 </a>
                                 <p class="disc">
-                                    @if($service->description)
-                                        {{ $service->description }}
+                                    @if($service->translate->first()->description)
+                                        {{ $service->translate->first()->description }}
                                     @else
-                                        {!! Str::limit($service->text, 90) !!}
+                                        {!! Str::limit($service->translate->first()->text, 90) !!}
                                     @endif
                                 </p>
                             </div>
@@ -94,7 +98,7 @@
                         <!-- single portfolio grid col-2 -->
                         <div class="portfolio-grid-col-2-single rts-portfolio__item">
                             <div class="inner-text">
-                                <a href="{{ route('quality', $quality->slug) }}">
+                                <a href="{{ route('quality_'.session('locale'), $quality->slug) }}">
                                     <h5 class="title">
                                         {{ $quality->title }}
                                     </h5>

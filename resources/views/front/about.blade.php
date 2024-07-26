@@ -20,7 +20,8 @@
                                 {{ $about->title }}
                             </em>
                         </h2>
-                        {!! $about->text !!}
+                        <p>
+                            {!! $about->text !!}
                         </p>
                     </div>
                 </div>

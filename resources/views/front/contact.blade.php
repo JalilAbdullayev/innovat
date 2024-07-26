@@ -19,7 +19,7 @@
                 <div class="col-lg-12">
                     <div class="bread-crumb-area-inner">
                         <div class="breadcrumb-top">
-                            <a href="{{ route('home') }}">
+                            <a href="{{ route('home_'.session('locale')) }}">
                                 Home
                             </a>
                             <span class="text-white"> / </span>

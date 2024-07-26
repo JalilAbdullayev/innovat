@@ -41,46 +41,73 @@
     <form class="card" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="card-body">
-            <div class="form-floating mb-3">
-                <input type="text" class="form-control" name="title" id="title" placeholder="Ad" maxlength="255"
-                       value="{{ $quality->title }}" required/>
-                <label for="title" class="form-label text-white-50">
-                    Ad
-                </label>
+            <ul class="nav nav-tabs customtab2" role="tablist">
+                @foreach($quality->translate as $index => $lang)
+                    <li class="nav-item">
+                        <a class="nav-link @if($index === 0) active @endif" data-bs-toggle="tab"
+                           href="#{{ $lang->lang }}" role="tab">
+                            <span class="hidden-xs-down">
+                                @if($lang->lang === 'en')
+                                    English
+                                @elseif($lang->lang === 'ru')
+                                    Русский
+                                @else
+                                    Azərbaycanca
+                                @endif
+                        </span>
+                        </a>
+                    </li>
+                @endforeach
+            </ul>
+            <div class="tab-content">
+                @foreach($quality->translate as $index => $tquality)
+                    <div class="tab-pane p-20 @if($index === 0) active @endif" id="{{ $tquality->lang }}"
+                         role="tabpanel">
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" name="title[]" id="title" placeholder="Ad"
+                                   maxlength="255" value="{{ $tquality->title }}" required/>
+                            <label for="title" class="form-label text-white-50">
+                                Ad
+                            </label>
+                        </div>
+                        @error('title')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" name="keywords[]" id="keywords"
+                                   placeholder="Açar sözlər" value="{{ $tquality->keywords }}" maxlength="255"/>
+                            <label for="keywords" class="form-label text-white-50">
+                                Açar sözlər
+                            </label>
+                        </div>
+                        @error('keywords')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" name="description[]" id="description"
+                                   placeholder="Açıqlama" value="{{ $tquality->description }}" maxlength="255"/>
+                            <label for="description" class="form-label text-white-50">
+                                Açıqlama
+                            </label>
+                        </div>
+                        @error('description')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
+                        <div class="mb-3">
+                            <label for="text" class="form-label text-white-50">
+                                Mətn
+                            </label>
+                            <textarea
+                                class="form-control @if($index === 0) text1 @elseif($index === 1) text2 @else text3 @endif"
+                                name="text[]" placeholder="Mətn">{!! $tquality->text !!}</textarea>
+                        </div>
+                        @error('text')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
+                        <input type="hidden" name="lang[]" value="{{ $tquality->lang }}"/>
+                    </div>
+                @endforeach
             </div>
-            @error('title')
-            <div class="alert alert-danger">{{ $message }}</div>
-            @enderror
-            <div class="form-floating mb-3">
-                <input type="text" class="form-control" name="keywords" id="keywords" placeholder="Açar sözlər"
-                       maxlength="255" value="{{ $quality->keywords }}"/>
-                <label for="keywords" class="form-label text-white-50">
-                    Açar sözlər
-                </label>
-            </div>
-            @error('keywords')
-            <div class="alert alert-danger">{{ $message }}</div>
-            @enderror
-            <div class="form-floating mb-3">
-                <input type="text" class="form-control" name="description" id="description" placeholder="Açıqlama"
-                       maxlength="255" value="{{ $quality->description }}"/>
-                <label for="description" class="form-label text-white-50">
-                    Açıqlama
-                </label>
-            </div>
-            @error('description')
-            <div class="alert alert-danger">{{ $message }}</div>
-            @enderror
-            <div class="mb-3">
-                <label for="text" class="form-label text-white-50">
-                    Mətn
-                </label>
-                <textarea class="form-control" name="text" id="text" required
-                          placeholder="Mətn">{!! $quality->text !!}</textarea>
-            </div>
-            @error('text')
-            <div class="alert alert-danger">{{ $message }}</div>
-            @enderror
             <div class="mb-3">
                 <label for="image" class="form-label text-white-50">
                     Şəkil
@@ -93,7 +120,7 @@
             <div class="alert alert-danger">{{ $message }}</div>
             @enderror
             <button type="submit" class="btn w-100 btn-primary text-white">
-                Saxla
+                Yarat
             </button>
         </div>
     </form>
@@ -106,14 +133,21 @@
         $(document).ready(function() {
             $('.dropify').dropify();
         });
-        const text = CKEDITOR.replace('text', {
-            extraAllowedContent: 'div',
-            height: 150,
-            filebrowserImageBrowseUrl: '/admin/laravel-filemanager?type=Images',
-            filebrowserImageUploadUrl: '/admin/laravel-filemanager/upload?type=Images&_token={{ csrf_token() }}',
-            filebrowserBrowseUrl: '/admin/laravel-filemanager?type=Files',
-            filebrowserUploadUrl: '/admin/laravel-filemanager/upload?type=Files&_token={{ csrf_token() }}',
-            filebrowserUploadMethod: 'form'
-        });
+
+        function createCKEditor(id) {
+            CKEDITOR.replaceAll(id, {
+                extraAllowedContent: 'div',
+                height: 150,
+                filebrowserImageBrowseUrl: '/admin/laravel-filemanager?type=Images',
+                filebrowserImageUploadUrl: '/admin/laravel-filemanager/upload?type=Images&_token={{ csrf_token() }}',
+                filebrowserBrowseUrl: '/admin/laravel-filemanager?type=Files',
+                filebrowserUploadUrl: '/admin/laravel-filemanager/upload?type=Files&_token={{ csrf_token() }}',
+                filebrowserUploadMethod: 'form'
+            });
+        }
+
+        const text1 = createCKEditor('text1');
+        const text2 = createCKEditor('text2');
+        const text3 = createCKEditor('text3');
     </script>
 @endsection

@@ -8,8 +8,10 @@ class Quality extends Model {
     protected $table = 'qualities';
     protected $primaryKey = 'id';
     protected $fillable = [
-        'title',
-        'text',
         'image',
     ];
+
+    public function translate() {
+        return $this->hasMany(QualityTranslate::class, 'quality_id', 'id');
+    }
 }

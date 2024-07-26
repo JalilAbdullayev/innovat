@@ -2,8 +2,9 @@
 @extends('admin.layouts.master')
 @section('title', 'Xidmətlər')
 @section('css')
-    <link rel="stylesheet" href="{{ asset('back/node_modules/datatables.net-bs4/css/dataTables.bootstrap4.css') }}"/>
-    <link rel="stylesheet" href="{{ asset('back/node_modules/datatables.net-bs4/css/responsive.dataTables.min.css') }}"/>
+	<link rel="stylesheet" href="{{ asset('back/node_modules/datatables.net-bs4/css/dataTables.bootstrap4.css') }}"/>
+	<link rel="stylesheet"
+		  href="{{ asset('back/node_modules/datatables.net-bs4/css/responsive.dataTables.min.css') }}"/>
 @endsection
 @section('content')
 	<!-- ============================================================== -->
@@ -29,7 +30,7 @@
 				</ol>
 				<a href="{{ route('admin.services.create') }}"
 				   class="btn btn-primary d-none d-lg-block m-l-15 text-white">
-                    <i class="ti-plus"></i> Yeni Xidmət
+					<i class="ti-plus"></i> Yeni Xidmət
 				</a>
 			</div>
 		</div>
@@ -56,10 +57,10 @@
 			@foreach($data as $item)
 				<tr id="{{ $item->id }}">
 					<td>
-						{{ $item->title }}
+						{{ $item->translate->where('lang', session('locale'))->first()->title }}
 					</td>
 					<td>
-                        <img src="{{ asset(Storage::url($item->image)) }}" alt="" class="w-25"/>
+						<img src="{{ asset(Storage::url($item->image)) }}" alt="" class="w-25"/>
 					</td>
 					<td>
 						<a href="{{ route('admin.services.edit', $item->id) }}" class="btn btn-outline-warning">

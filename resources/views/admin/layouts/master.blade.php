@@ -11,12 +11,6 @@
     <title>
         @yield('title')
     </title>
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
     <link rel="stylesheet" href="{{ asset('back/node_modules/morrisjs/morris.css') }}"/>
     <link rel="stylesheet" href="{{ asset('back/node_modules/toast-master/css/jquery.toast.css') }}"/>
     <link rel="stylesheet" href="{{ asset('back/dist/css/style.min.css') }}"/>
@@ -28,7 +22,9 @@
 <div class="preloader">
     <div class="loader">
         <div class="loader__figure"></div>
-        <p class="loader__label">Elite admin</p>
+        <p class="loader__label">
+            {{ $settings->title }}
+        </p>
     </div>
 </div>
 <!-- Main wrapper - style you can find in pages.scss -->
@@ -49,11 +45,18 @@
                 <!-- toggle and nav items -->
                 <ul class="navbar-nav me-auto">
                     <!-- This is  -->
-                    <li class="nav-item"><a class="nav-link nav-toggler d-block d-md-none waves-effect waves-dark"
-                                            href="javascript:void(0)"><i class="ti-menu"></i></a></li>
-                    <li class="nav-item"><a
-                            class="nav-link sidebartoggler d-none d-lg-block d-md-block waves-effect waves-dark"
-                            href="javascript:void(0)"><i class="icon-menu"></i></a></li>
+                    <li class="nav-item">
+                        <a class="nav-link nav-toggler d-block d-md-none waves-effect waves-dark"
+                           href="javascript:void(0)">
+                            <i class="ti-menu"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link sidebartoggler d-none d-lg-block d-md-block waves-effect waves-dark"
+                           href="javascript:void(0)">
+                            <i class="icon-menu"></i>
+                        </a>
+                    </li>
                 </ul>
             </div>
         </nav>
@@ -73,7 +76,8 @@
     <!-- End Page wrapper  -->
     <!-- footer -->
     <footer class="footer">
-        © {{ date('Y') == 2024 ? 2024 : '2024 -' . date('Y') }} <a target="_blank" href="{{ route('home') }}">
+        © {{ date('Y') == 2024 ? 2024 : '2024 -' . date('Y') }}
+        <a target="_blank" href="{{ route('home_'.session('locale')) }}">
             {{ $settings->title }}
         </a>
     </footer>

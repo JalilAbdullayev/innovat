@@ -67,16 +67,16 @@
                                 <img src="{{ asset(Storage::url($service->image)) }}" alt=""/>
                             </div>
                             <div class="body">
-                                <a href="{{ route('service', $service->slug) }}">
+                                <a href="{{ route('service_'.session('locale'), $service->translate->where('lang', session('locale'))->first()->slug) }}">
                                     <h6 class="title">
-                                        {{ $service->title }}
+                                        {{ $service->translate->where('lang', session('locale'))->first()->title }}
                                     </h6>
                                 </a>
                                 <p class="disc">
-                                    @if($service->description)
-                                        {{ $service->description }}
+                                    @if($service->translate->where('lang', session('locale'))->first()->description)
+                                        {{ $service->translate->where('lang', session('locale'))->first()->description }}
                                     @else
-                                        {!! Str::limit($service->text, 90) !!}
+                                        {!! Str::limit($service->translate->where('lang', session('locale'))->first()->text, 90) !!}
                                     @endif
                                 </p>
                             </div>
@@ -108,7 +108,7 @@
                             <div class="inner inner-{{ $index }}">
                                 <style>
                                     .single-working-prcess-one {
-                                        .inner-{{ $index }}     {
+                                        .inner-{{ $index }}        {
                                             &::after {
                                                 background-image: url("{{ asset('public'.Storage::url($quality->image)) }}");
                                                 background-position: center;
@@ -128,14 +128,15 @@
                                     }
                                 </style>
                                 <span>0{{ $index + 1 }}</span>
-                                <a href="{{ route('quality', $quality->slug) }}" class="title">
-                                    {{ $quality->title }}
+                                <a href="{{ route('quality_'.session('locale'), $quality->translate->first()->slug) }}"
+                                   class="title">
+                                    {{ $quality->translate->first()->title }}
                                 </a>
                                 <p class="disc text-black">
-                                    @if($quality->description)
-                                        {{ $quality->description }}
+                                    @if($quality->translate->first()->description)
+                                        {{ $quality->translate->first()->description }}
                                     @else
-                                        {!! Str::limit($quality->text) !!}
+                                        {!! Str::limit($quality->translate->first()->text) !!}
                                     @endif
                                 </p>
                             </div>

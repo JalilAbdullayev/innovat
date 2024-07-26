@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CustomRequest;
 use App\Models\Quality;
+use App\Models\QualityTranslate;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Storage;
@@ -22,12 +23,6 @@ class QualityController extends Controller {
     }
 
     public function store(CustomRequest $request): RedirectResponse {
-        $quality = new Quality;
-        $quality->title = $request->title;
-        $quality->slug = Str::slug($request->title);
-        $quality->description = $request->description;
-        $quality->keywords = $request->keywords;
-        $quality->text = $request->text;
         if($request->file('image')) {
             $file = $request->file('image');
             $extension = $file->getClientOriginalExtension();
@@ -35,9 +30,25 @@ class QualityController extends Controller {
             $explode = explode('.', $fileOriginalName);
             $fileOriginalName = Str::slug($explode[0], '-') . '_' . now()->format('d-m-Y-H-i-s') . '.' . $extension;
             Storage::putFileAs('public/images/qualities/', $file, $fileOriginalName);
-            $quality->image = 'images/qualities/' . $fileOriginalName;
+        } else {
+            $fileOriginalName = null;
         }
-        $quality->save();
+
+        $quality = Quality::create([
+            'image' => $fileOriginalName ? 'images/qualities/' . $fileOriginalName : null,
+        ]);
+
+        for($i = 0; $i < count($request->lang); $i++) {
+            QualityTranslate::create([
+                'quality_id' => $quality->id,
+                'title' => $request->title[$i],
+                'slug' => Str::slug($request->title[$i]),
+                'description' => $request->description[$i],
+                'keywords' => $request->keywords[$i],
+                'text' => $request->text[$i],
+                'lang' => $request->lang[$i],
+            ]);
+        }
         return Redirect::route('admin.qualities.index');
     }
 
@@ -48,11 +59,6 @@ class QualityController extends Controller {
 
     public function update(int $id, CustomRequest $request): RedirectResponse {
         $quality = Quality::findOrFail($id);
-        $quality->title = $request->title;
-        $quality->slug = Str::slug($request->title);
-        $quality->description = $request->description;
-        $quality->keywords = $request->keywords;
-        $quality->text = $request->text;
         if($request->file('image')) {
             if($quality->image) {
                 Storage::delete('public/' . $quality->image);
@@ -63,14 +69,29 @@ class QualityController extends Controller {
             $explode = explode('.', $fileOriginalName);
             $fileOriginalName = Str::slug($explode[0], '-') . '_' . now()->format('d-m-Y-H-i-s') . '.' . $extension;
             Storage::putFileAs('public/images/qualities/', $file, $fileOriginalName);
-            $quality->image = 'images/qualities/' . $fileOriginalName;
+        } else {
+            $fileOriginalName = null;
         }
-        $quality->save();
+
+        Quality::whereId($id)->update([
+            'image' => $fileOriginalName ? 'images/qualities/' . $fileOriginalName : null,
+        ]);
+
+        for($i = 0; $i < count($request->lang); $i++) {
+            QualityTranslate::whereQualityId($id)->whereLang($request->lang[$i])->update([
+                'title' => $request->title[$i],
+                'slug' => Str::slug($request->title[$i]),
+                'description' => $request->description[$i],
+                'keywords' => $request->keywords[$i],
+                'text' => $request->text[$i]
+            ]);
+        }
         return Redirect::route('admin.qualities.index');
     }
 
     public function delete($id): RedirectResponse {
         $quality = Quality::findOrFail($id);
+        QualityTranslate::whereQualityId($id)->delete();
         if($quality->image && Storage::exists('public/' . $quality->image)) {
             Storage::delete('public/' . $quality->image);
         }

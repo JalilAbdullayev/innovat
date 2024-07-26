@@ -41,45 +41,166 @@
     <form class="card" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="card-body">
-            <div class="form-floating mb-3">
-                <input type="text" class="form-control" name="title" id="title" placeholder="Ad" maxlength="255"
-                       required/>
-                <label for="title" class="form-label text-white-50">
-                    Ad
-                </label>
+            <ul class="nav nav-tabs customtab2" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" data-bs-toggle="tab" href="#en" role="tab">
+                        <span class="hidden-xs-down">
+                            English
+                        </span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-bs-toggle="tab" href="#az" role="tab">
+                        <span class="hidden-xs-down">
+                            Azərbaycanca
+                        </span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-bs-toggle="tab" href="#ru" role="tab">
+                        <span class="hidden-xs-down">
+                            Русский
+                        </span>
+                    </a>
+                </li>
+            </ul>
+            <div class="tab-content">
+                <div class="tab-pane p-20 active" id="en" role="tabpanel">
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" name="title[]" id="title" placeholder="Ad"
+                               maxlength="255"
+                               required/>
+                        <label for="title" class="form-label text-white-50">
+                            Ad
+                        </label>
+                    </div>
+                    @error('title')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" name="keywords[]" id="keywords"
+                               placeholder="Açar sözlər"
+                               maxlength="255"/>
+                        <label for="keywords" class="form-label text-white-50">
+                            Açar sözlər
+                        </label>
+                    </div>
+                    @error('keywords')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" name="description[]" id="description"
+                               placeholder="Açıqlama"
+                               maxlength="255"/>
+                        <label for="description" class="form-label text-white-50">
+                            Açıqlama
+                        </label>
+                    </div>
+                    @error('description')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
+                    <div class="mb-3">
+                        <label for="text" class="form-label text-white-50">
+                            Mətn
+                        </label>
+                        <textarea class="form-control" name="text[]" id="text1" placeholder="Mətn"></textarea>
+                    </div>
+                    @error('text')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
+                    <input type="hidden" name="lang[]" value="en"/>
+                </div>
+                <div class="tab-pane p-20" id="az" role="tabpanel">
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" name="title[]" id="title" placeholder="Ad"
+                               maxlength="255"
+                               required/>
+                        <label for="title" class="form-label text-white-50">
+                            Ad
+                        </label>
+                    </div>
+                    @error('title')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" name="keywords[]" id="keywords"
+                               placeholder="Açar sözlər"
+                               maxlength="255"/>
+                        <label for="keywords" class="form-label text-white-50">
+                            Açar sözlər
+                        </label>
+                    </div>
+                    @error('keywords')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" name="description[]" id="description"
+                               placeholder="Açıqlama"
+                               maxlength="255"/>
+                        <label for="description" class="form-label text-white-50">
+                            Açıqlama
+                        </label>
+                    </div>
+                    @error('description')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
+                    <div class="mb-3">
+                        <label for="text" class="form-label text-white-50">
+                            Mətn
+                        </label>
+                        <textarea class="form-control" name="text[]" id="text2" placeholder="Mətn"></textarea>
+                    </div>
+                    @error('text')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
+                    <input type="hidden" name="lang[]" value="az"/>
+                </div>
+                <div class="tab-pane p-20" id="ru" role="tabpanel">
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" name="title[]" id="title" placeholder="Ad"
+                               maxlength="255"
+                               required/>
+                        <label for="title" class="form-label text-white-50">
+                            Ad
+                        </label>
+                    </div>
+                    @error('title')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" name="keywords[]" id="keywords"
+                               placeholder="Açar sözlər"
+                               maxlength="255"/>
+                        <label for="keywords" class="form-label text-white-50">
+                            Açar sözlər
+                        </label>
+                    </div>
+                    @error('keywords')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" name="description[]" id="description"
+                               placeholder="Açıqlama"
+                               maxlength="255"/>
+                        <label for="description" class="form-label text-white-50">
+                            Açıqlama
+                        </label>
+                    </div>
+                    @error('description')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
+                    <div class="mb-3">
+                        <label for="text" class="form-label text-white-50">
+                            Mətn
+                        </label>
+                        <textarea class="form-control" name="text[]" id="text3" placeholder="Mətn"></textarea>
+                    </div>
+                    @error('text')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
+                    <input type="hidden" name="lang[]" value="ru"/>
+                </div>
             </div>
-            @error('title')
-            <div class="alert alert-danger">{{ $message }}</div>
-            @enderror
-            <div class="form-floating mb-3">
-                <input type="text" class="form-control" name="keywords" id="keywords" placeholder="Açar sözlər"
-                       maxlength="255"/>
-                <label for="keywords" class="form-label text-white-50">
-                    Açar sözlər
-                </label>
-            </div>
-            @error('keywords')
-            <div class="alert alert-danger">{{ $message }}</div>
-            @enderror
-            <div class="form-floating mb-3">
-                <input type="text" class="form-control" name="description" id="description" placeholder="Açıqlama"
-                       maxlength="255"/>
-                <label for="description" class="form-label text-white-50">
-                    Açıqlama
-                </label>
-            </div>
-            @error('description')
-            <div class="alert alert-danger">{{ $message }}</div>
-            @enderror
-            <div class="mb-3">
-                <label for="text" class="form-label text-white-50">
-                    Mətn
-                </label>
-                <textarea class="form-control" name="text" id="text" required placeholder="Mətn"></textarea>
-            </div>
-            @error('text')
-            <div class="alert alert-danger">{{ $message }}</div>
-            @enderror
             <div class="mb-3">
                 <label for="image" class="form-label text-white-50">
                     Şəkil
@@ -104,14 +225,20 @@
         $(document).ready(function() {
             $('.dropify').dropify();
         });
-        const text = CKEDITOR.replace('text', {
-            extraAllowedContent: 'div',
-            height: 150,
-            filebrowserImageBrowseUrl: '/admin/laravel-filemanager?type=Images',
-            filebrowserImageUploadUrl: '/admin/laravel-filemanager/upload?type=Images&_token={{ csrf_token() }}',
-            filebrowserBrowseUrl: '/admin/laravel-filemanager?type=Files',
-            filebrowserUploadUrl: '/admin/laravel-filemanager/upload?type=Files&_token={{ csrf_token() }}',
-            filebrowserUploadMethod: 'form'
-        });
+        function createCKEditor(id) {
+            CKEDITOR.replace(id, {
+                extraAllowedContent: 'div',
+                height: 150,
+                filebrowserImageBrowseUrl: '/admin/laravel-filemanager?type=Images',
+                filebrowserImageUploadUrl: '/admin/laravel-filemanager/upload?type=Images&_token={{ csrf_token() }}',
+                filebrowserBrowseUrl: '/admin/laravel-filemanager?type=Files',
+                filebrowserUploadUrl: '/admin/laravel-filemanager/upload?type=Files&_token={{ csrf_token() }}',
+                filebrowserUploadMethod: 'form'
+            });
+        }
+
+        const text1 = createCKEditor('text1');
+        const text2 = createCKEditor('text2');
+        const text3 = createCKEditor('text3');
     </script>
 @endsection

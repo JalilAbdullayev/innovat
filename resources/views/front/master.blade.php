@@ -3,10 +3,12 @@
 <html lang="{{ Str::replace('-', '_', App::getLocale()) }}">
 <head>
     <meta charset="UTF-8"/>
+    <meta name="csrf-token" content="{{ csrf_token() }}"/>
     <meta name="author" content="{{ $settings->author }}"/>
     <meta name="description" content="@yield('description', $settings->description)"/>
     <meta name="keywords"
-          content="@yield('keywords') @unless(Route::is('home')) , @endunless {{ $settings->keywords }}"/>
+          content="@yield('keywords') @unless(Route::is('home_'.session('locale'))) , @endunless {{ $settings->keywords
+          }}"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>
@@ -24,42 +26,42 @@
 </head>
 <body class="index-five">
 <!-- header three area start -->
-<header class="header-three five header--sticky @unless(Route::is('contact')) mb--40 @endunless"
+<header class="header-three five header--sticky @unless(Route::is('contact_'.session('locale'))) mb--40 @endunless"
         style="position: relative;">
-    <a href="{{ route('home') }}" class="logo-area d-inline-block">
+    <a href="{{ route('home_'.session('locale')) }}" class="logo-area d-inline-block">
         <img src="{{ asset(Storage::url($settings->logo)) }}" alt="logo"/>
     </a>
     <div class="header-right">
         <div class="nav-area-center d-lg-block">
             <nav class="navigation">
                 <ul class="parent-ul">
-                    <li class="has-dropdown with-megamenu">
-                        <a class="nav-link" href="{{ route('home') }}">
+                    <li>
+                        <a class="nav-link" href="{{ route('home_'.session('locale')) }}">
                             Home
                         </a>
                     </li>
                     <li>
-                        <a class="nav-link" href="{{ route('about') }}">
+                        <a class="nav-link" href="{{ route('about_'.session('locale')) }}">
                             About Us
                         </a>
                     </li>
                     <li>
-                        <a class="nav-link" href="{{ route('services') }}">
+                        <a class="nav-link" href="{{ route('services_'.session('locale')) }}">
                             Services
                         </a>
                     </li>
                     <li>
-                        <a class="nav-link" href="{{ route('team') }}">
+                        <a class="nav-link" href="{{ route('team_'.session('locale')) }}">
                             Our Team
                         </a>
                     </li>
                     <li>
-                        <a class="nav-link" href="{{ route('contact') }}">
+                        <a class="nav-link" href="{{ route('contact_'.session('locale')) }}">
                             Contact
                         </a>
                     </li>
                     <li>
-                        <a class="nav-link" href="{{ route('privacy') }}">
+                        <a class="nav-link" href="{{ route('privacy_'.session('locale')) }}">
                             Privacy Policy
                         </a>
                     </li>
@@ -74,8 +76,27 @@
                     <rect y="7" width="24" height="2" fill="#D9D9D9"></rect>
                 </svg>
             </div>
-            <span class="d-lg-none">Menu</span>
+            <span class="d-none">Menu</span>
         </div>
+        <nav class="navigation d-sm-none d-lg-block">
+            <ul class="parent-ul">
+                <li>
+                    <form action="{{ route('update-locale') }}">
+                        <select name="locale" id="locale" class="text-white" onchange="updateLocale()">
+                            <option value="en" @if(session('locale') === 'en') selected @endif class="bg-success">
+                                English
+                            </option>
+                            <option value="az" @if(session('locale') === 'az') selected @endif class="bg-success">
+                                Azərbaycanca
+                            </option>
+                            <option value="ru" @if(session('locale') === 'ru') selected @endif class="bg-success">
+                                Русский
+                            </option>
+                        </select>
+                    </form>
+                </li>
+            </ul>
+        </nav>
     </div>
 </header>
 <!-- header three area end -->
@@ -89,7 +110,9 @@
                 <div class="footer-two-main-wrapper-right">
                     <!-- single footer two wozed -->
                     <div class="single-footer-wized">
-                        <a href="{{ route('home') }}" class="logo d-inline-block mb--30" style="width: 10%">
+                        <a href="{{ route('home_'.session('locale')) }}" class="logo d-inline-block mb--30"
+                           style="width:
+                        10%">
                             <img src="{{ asset(Storage::url($settings->logo)) }}" alt="{{ $settings->title }}"/>
                         </a>
                         <!-- social style two -->
@@ -135,32 +158,32 @@
                             </div>
                             <ul>
                                 <li>
-                                    <a href="{{ route('home') }}">
+                                    <a href="{{ route('home_'.session('locale')) }}">
                                         Home
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="{{ route('about') }}">
+                                    <a href="{{ route('about_'.session('locale')) }}">
                                         About Us
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="{{ route('services') }}">
+                                    <a href="{{ route('services_'.session('locale')) }}">
                                         Services
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="{{ route('team') }}">
+                                    <a href="{{ route('team_'.session('locale')) }}">
                                         Our Team
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="{{ route('contact') }}">
+                                    <a href="{{ route('contact_'.session('locale')) }}">
                                         Contact
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="{{ route('privacy') }}">
+                                    <a href="{{ route('privacy_'.session('locale')) }}">
                                         Privacy Policy
                                     </a>
                                 </li>
@@ -178,7 +201,7 @@
                 <div class="col-lg-12">
                     <div class="copy-right-area-inner-two">
                         <p class="disc">
-                            &copy; <a href="{{ route('home') }}">
+                            &copy; <a href="{{ route('home_'.session('locale')) }}">
                                 {{ $settings->title }}
                             </a> {{ date('Y') == 2024 ? 2024 : '2024 -' . date('Y') }}. Bütün hüquqlarımız qorunur.
                         </p>
@@ -199,32 +222,47 @@
         <nav class="nav-main mainmenu-nav mt--30">
             <ul class="mainmenu metismenu" id="mobile-menu-active">
                 <li>
-                    <a href="{{ route('home') }}" class="main">
+                    <form action="{{ route('update-locale') }}">
+                        <select name="locale" id="locale" onchange="updateLocale()" class="mob-select">
+                            <option value="en" @if(session('locale') === 'en') selected @endif>
+                                English
+                            </option>
+                            <option value="az" @if(session('locale') === 'az') selected @endif>
+                                Azərbaycanca
+                            </option>
+                            <option value="ru" @if(session('locale') === 'ru') selected @endif>
+                                Русский
+                            </option>
+                        </select>
+                    </form>
+                </li>
+                <li>
+                    <a href="{{ route('home_'.session('locale')) }}" class="main">
                         Home
                     </a>
                 </li>
                 <li>
-                    <a class="main" href="{{ route('about') }}">
+                    <a class="main" href="{{ route('about_'.session('locale')) }}">
                         About Us
                     </a>
                 </li>
                 <li>
-                    <a class="main" href="{{ route('services') }}">
+                    <a class="main" href="{{ route('services_'.session('locale')) }}">
                         Services
                     </a>
                 </li>
                 <li>
-                    <a class="main" href="{{ route('team') }}">
+                    <a class="main" href="{{ route('team_'.session('locale')) }}">
                         Our Team
                     </a>
                 </li>
                 <li>
-                    <a class="main" href="{{ route('contact') }}">
+                    <a class="main" href="{{ route('contact_'.session('locale')) }}">
                         Contact
                     </a>
                 </li>
                 <li>
-                    <a class="main" href="{{ route('privacy') }}">
+                    <a class="main" href="{{ route('privacy_'.session('locale')) }}">
                         Privacy Policy
                     </a>
                 </li>
@@ -273,5 +311,23 @@
 <script src="{{ asset("front/js/plugins/contact.form.js")}}"></script>
 <!-- main Js -->
 <script src="{{ asset("front/js/main.js")}}"></script>
+<script>
+    function updateLocale() {
+        const locale = document.getElementById('locale').value;
+        const csrfToken = document.head.querySelector('meta[name="csrf-token"]').content;
+
+        fetch('{{ route('update-locale') }}?locale=' + locale, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': csrfToken
+            }
+        }).then(response => response.json()).then(data => {
+            if(data.success) {
+                window.location.href = '{{ url('/') }}/' + locale + '/';
+            }
+        });
+    }
+</script>
 </body>
 </html>

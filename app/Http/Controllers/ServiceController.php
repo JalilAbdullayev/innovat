@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CustomRequest;
 use App\Models\Service;
+use App\Models\ServiceTranslate;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\View;
@@ -23,12 +23,6 @@ class ServiceController extends Controller {
     }
 
     public function store(CustomRequest $request): RedirectResponse {
-        $service = new Service;
-        $service->title = $request->title;
-        $service->slug = Str::slug($request->title);
-        $service->description = $request->description;
-        $service->keywords = $request->keywords;
-        $service->text = $request->text;
         if($request->file('image')) {
             $file = $request->file('image');
             $extension = $file->getClientOriginalExtension();
@@ -36,9 +30,25 @@ class ServiceController extends Controller {
             $explode = explode('.', $fileOriginalName);
             $fileOriginalName = Str::slug($explode[0], '-') . '_' . now()->format('d-m-Y-H-i-s') . '.' . $extension;
             Storage::putFileAs('public/images/services/', $file, $fileOriginalName);
-            $service->image = 'images/services/' . $fileOriginalName;
+        } else {
+            $fileOriginalName = null;
         }
-        $service->save();
+
+        $service = Service::create([
+            'image' => $fileOriginalName ? 'images/services/' . $fileOriginalName : null,
+        ]);
+
+        for($i = 0; $i < count($request->lang); $i++) {
+            ServiceTranslate::create([
+                'service_id' => $service->id,
+                'title' => $request->title[$i],
+                'slug' => Str::slug($request->title[$i]),
+                'description' => $request->description[$i],
+                'keywords' => $request->keywords[$i],
+                'text' => $request->text[$i],
+                'lang' => $request->lang[$i],
+            ]);
+        }
         return Redirect::route('admin.services.index');
     }
 
@@ -49,11 +59,6 @@ class ServiceController extends Controller {
 
     public function update(int $id, CustomRequest $request): RedirectResponse {
         $service = Service::findOrFail($id);
-        $service->title = $request->title;
-        $service->slug = Str::slug($request->title);
-        $service->description = $request->description;
-        $service->keywords = $request->keywords;
-        $service->text = $request->text;
         if($request->file('image')) {
             if($service->image) {
                 Storage::delete('public/' . $service->image);
@@ -64,14 +69,29 @@ class ServiceController extends Controller {
             $explode = explode('.', $fileOriginalName);
             $fileOriginalName = Str::slug($explode[0], '-') . '_' . now()->format('d-m-Y-H-i-s') . '.' . $extension;
             Storage::putFileAs('public/images/services/', $file, $fileOriginalName);
-            $service->image = 'images/services/' . $fileOriginalName;
+        } else {
+            $fileOriginalName = null;
         }
-        $service->save();
+
+        Service::whereId($id)->update([
+            'image' => $fileOriginalName ? 'images/services/' . $fileOriginalName : null,
+        ]);
+
+        for($i = 0; $i < count($request->lang); $i++) {
+            ServiceTranslate::whereServiceId($id)->whereLang($request->lang[$i])->update([
+                'title' => $request->title[$i],
+                'slug' => Str::slug($request->title[$i]),
+                'description' => $request->description[$i],
+                'keywords' => $request->keywords[$i],
+                'text' => $request->text[$i]
+            ]);
+        }
         return Redirect::route('admin.services.index');
     }
 
     public function delete($id): RedirectResponse {
         $service = Service::findOrFail($id);
+        ServiceTranslate::whereServiceId($id)->delete();
         if($service->image && Storage::exists('public/' . $service->image)) {
             Storage::delete('public/' . $service->image);
         }

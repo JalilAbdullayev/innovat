@@ -16,13 +16,13 @@
             <div class="col-lg-12">
                 <div class="bread-crumb-area-inner">
                     <div class="breadcrumb-top">
-                        <a href="{{ route('home') }}">
+                        <a href="{{ route('home_'.session('locale')) }}">
                             Home
                         </a> /
                         <a href="{{ route('services') }}">
-                            @if(Route::is('service'))
+                            @if(Route::is('service_'.session('locale')))
                                 Services
-                            @elseif(Route::is('quality'))
+                            @elseif(Route::is('quality_'.session('locale')))
                                 Advantages
                             @endif
                         </a> /
@@ -55,9 +55,9 @@
                         <div class="service-left-sidebar-wized mb--50">
                             <div class="topa-rea">
                                 <h4 class="title">
-                                    @if(Route::is('service'))
+                                    @if(Route::is('service_'.session('locale')))
                                         Other Services
-                                    @elseif(Route::is('quality'))
+                                    @elseif(Route::is('quality_'.session('locale')))
                                         Other Advantages
                                     @endif
                                 </h4>

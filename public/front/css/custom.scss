@@ -147,3 +147,13 @@ header {
         }
     }
 }
+
+.mob-select {
+    padding: 12px 0 17px 0;
+    border-bottom: 1px solid #f3f3f3;
+    color: $color-light-green;
+
+    &:focus {
+        border-bottom: 1px solid $color-light-green;
+    }
+}

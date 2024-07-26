@@ -7,7 +7,7 @@
             <div class="col-lg-12">
                 <div class="bread-crumb-area-inner">
                     <div class="breadcrumb-top">
-                        <a href="{{ route('home') }}">Home</a> /
+                        <a href="{{ route('home_'.session('locale')) }}">Home</a> /
                         <span class="active">Privacy Policy</span>
                     </div>
                     <div class="bottom-title">
