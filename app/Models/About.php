@@ -8,8 +8,10 @@ class About extends Model {
     protected $table = 'about';
     protected $primaryKey = 'id';
     protected $fillable = [
-        'title',
-        'image',
-        'about'
+        'image'
     ];
+
+    public function translate() {
+        return $this->hasMany(AboutTranslate::class, 'about_id', 'id');
+    }
 }

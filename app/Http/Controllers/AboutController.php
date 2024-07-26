@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CustomRequest;
 use App\Models\About;
+use App\Models\AboutTranslate;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
@@ -16,7 +17,7 @@ class AboutController extends Controller {
     public function update(CustomRequest $request) {
         $about = About::firstOrFail();
         if($request->file('image')) {
-            if($request->image) {
+            if($about->image) {
                 Storage::delete('public/' . $about->image);
             }
             $file = $request->file('image');
@@ -25,11 +26,20 @@ class AboutController extends Controller {
             $explode = explode('.', $fileOriginalName);
             $fileOriginalName = Str::slug($explode[0], '-') . '_' . now()->format('d-m-Y-H-i-s') . '.' . $extension;
             Storage::putFileAs('public/images/', $file, $fileOriginalName);
-            $about->image = 'images/' . $fileOriginalName;
+        } else {
+            $fileOriginalName = null;
         }
-        $about->title = $request->title;
-        $about->text = $request->text;
-        $about->save();
+
+        $about->update([
+            'image' => $fileOriginalName ? 'images/' . $fileOriginalName : null,
+        ]);
+
+        for($i = 0; $i < count($request->lang); $i++) {
+            AboutTranslate::whereAboutId($about->id)->whereLang($request->lang[$i])->update([
+                'title' => $request->title[$i],
+                'text' => $request->text[$i]
+            ]);
+        }
         return redirect()->back();
     }
 }
