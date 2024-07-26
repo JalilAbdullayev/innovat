@@ -31,18 +31,55 @@
     <form class="card" method="POST">
         @csrf
         <div class="card-body">
-            <div class="mb-3">
-                <label for="text" class="form-label text-white-50">
-                    Mətn
-                </label>
-                <textarea class="form-control" name="text" id="text" required
-                          placeholder="Mətn">{!! $privacy->text !!}</textarea>
+            <ul class="nav nav-tabs customtab2" role="tablist">
+                @foreach($privacy->translate as $index => $lang)
+                    <li class="nav-item">
+                        <a class="nav-link @if($index === 0) active @endif" data-bs-toggle="tab"
+                           href="#{{ $lang->lang }}" role="tab">
+                            <span class="hidden-xs-down">
+                                @if($lang->lang === 'en')
+                                    English
+                                @elseif($lang->lang === 'ru')
+                                    Русский
+                                @else
+                                    Azərbaycanca
+                                @endif
+                        </span>
+                        </a>
+                    </li>
+                @endforeach
+            </ul>
+            <div class="tab-content">
+                @foreach($privacy->translate as $index => $tprivacy)
+                    <div class="tab-pane p-20 @if($index === 0) active @endif" id="{{ $tprivacy->lang }}"
+                         role="tabpanel">
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" name="title[]" id="title" placeholder="Ad"
+                                   maxlength="255" value="{{ $tprivacy->title }}" required/>
+                            <label for="title" class="form-label text-white-50">
+                                Başlıq
+                            </label>
+                        </div>
+                        @error('title')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
+                        <div class="mb-3">
+                            <label for="text" class="form-label text-white-50">
+                                Mətn
+                            </label>
+                            <textarea
+                                class="form-control @if($index === 0) text1 @elseif($index === 1) text2 @else text3 @endif"
+                                name="text[]" placeholder="Mətn">{!! $tprivacy->text !!}</textarea>
+                        </div>
+                        @error('text')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
+                        <input type="hidden" name="lang[]" value="{{ $tprivacy->lang }}"/>
+                    </div>
+                @endforeach
             </div>
-            @error('text')
-            <div class="alert alert-danger">{{ $message }}</div>
-            @enderror
             <button type="submit" class="btn w-100 btn-primary text-white">
-                Yadda saxla
+                Yarat
             </button>
         </div>
     </form>

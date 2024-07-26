@@ -58,7 +58,7 @@
                             <input type="text" class="form-control" name="title[]" id="title" placeholder="Ad"
                                    maxlength="255" value="{{ $tabout->title }}" required/>
                             <label for="title" class="form-label text-white-50">
-                                Ad
+                                Başlıq
                             </label>
                         </div>
                         @error('title')

@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Privacy extends Model {
     protected $table = 'privacy';
-    protected $primaryKey = 'id';
-    protected $fillable = ['text'];
+
+    public function translate() {
+        return $this->hasMany(PrivacyTranslate::class, 'privacy_id', 'id');
+    }
 }
