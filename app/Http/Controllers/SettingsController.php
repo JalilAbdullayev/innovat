@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\SettingRequest;
 use App\Models\Settings;
+use App\Models\SettingsTranslate;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Storage;
@@ -17,7 +18,7 @@ class SettingsController extends Controller {
     }
 
     public function update(SettingRequest $request): RedirectResponse {
-        $settings = Settings::findOrFail(1);
+        $settings = Settings::firstOrFail();
         if($request->file('favicon')) {
             if($request->favicon) {
                 Storage::delete('public/' . $settings->favicon);
@@ -42,11 +43,15 @@ class SettingsController extends Controller {
             Storage::putFileAs('public/images/', $file, $fileOriginalName);
             $settings->logo = 'images/' . $fileOriginalName;
         }
-        $settings->title = $request->title;
-        $settings->description = $request->description;
-        $settings->author = $request->author;
-        $settings->keywords = $request->keywords;
-        $settings->save();
+
+        for($i = 0; $i < count($request->lang); $i++) {
+            SettingsTranslate::whereSettingsId($settings->id)->whereLang($request->lang[$i])->update([
+                'title' => $request->title[$i],
+                'author' => $request->author[$i],
+                'keywords' => $request->keywords[$i],
+                'description' => $request->description[$i]
+            ]);
+        }
         return Redirect::back();
     }
 }

@@ -11,7 +11,7 @@
                     <div class="banner-top-five">
                         <div class="left-area">
                             <h1 class="title rts_hero__title">
-                                {{ $settings->title }}
+                                {{ $settings->translate->where('lang', session('locale'))->first()->title }}
                             </h1>
                         </div>
                     </div>
@@ -28,14 +28,14 @@
                 <div class="col-lg-5">
                     <div class="thumbnail-about-five">
                         <h2 class="title">
-                            Welcome to {{ $settings->title }}
+                            Welcome to {{ $settings->translate->where('lang', session('locale'))->first()->title }}
                         </h2>
                     </div>
                 </div>
                 <div class="col-lg-5">
                     <div class="about-right-inner-five rts-slide-up">
                         <p class="disc-1">
-                            {{ $settings->description }}
+                            {{ $settings->translate->where('lang', session('locale'))->first()->description }}
                         </p>
                     </div>
                 </div>
@@ -128,15 +128,15 @@
                                     }
                                 </style>
                                 <span>0{{ $index + 1 }}</span>
-                                <a href="{{ route('quality_'.session('locale'), $quality->translate->first()->slug) }}"
+                                <a href="{{ route('quality_'.session('locale'), $quality->translate->where('lang', session('locale'))->first()->slug) }}"
                                    class="title">
-                                    {{ $quality->translate->first()->title }}
+                                    {{ $quality->translate->where('lang', session('locale'))->first()->title }}
                                 </a>
                                 <p class="disc text-black">
-                                    @if($quality->translate->first()->description)
-                                        {{ $quality->translate->first()->description }}
+                                    @if($quality->translate->where('lang', session('locale'))->first()->description)
+                                        {{ $quality->translate->where('lang', session('locale'))->first()->description }}
                                     @else
-                                        {!! Str::limit($quality->translate->first()->text) !!}
+                                        {!! Str::limit($quality->translate->where('lang', session('locale'))->first()->text) !!}
                                     @endif
                                 </p>
                             </div>

@@ -4,15 +4,15 @@
 <head>
     <meta charset="UTF-8"/>
     <meta name="csrf-token" content="{{ csrf_token() }}"/>
-    <meta name="author" content="{{ $settings->author }}"/>
-    <meta name="description" content="@yield('description', $settings->description)"/>
+    <meta name="author" content="{{ $settings->translate->where('lang', session('locale'))->first()->author }}"/>
+    <meta name="description" content="@yield('description', $settings->translate->where('lang', session('locale'))->first()->description)"/>
     <meta name="keywords"
-          content="@yield('keywords') @unless(Route::is('home_'.session('locale'))) , @endunless {{ $settings->keywords
+          content="@yield('keywords') @unless(Route::is('home_'.session('locale'))) , @endunless {{ $settings->translate->where('lang', session('locale'))->first()->keywords
           }}"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>
-        @yield('title', $settings->title)
+        @yield('title', $settings->translate->where('lang', session('locale'))->first()->title)
     </title>
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset(Storage::url($settings->favicon)) }}"/>
     <link rel="stylesheet" href="{{ asset('front/css/plugins/fontawesome-6.css') }}"/>
@@ -202,7 +202,7 @@
                     <div class="copy-right-area-inner-two">
                         <p class="disc">
                             &copy; <a href="{{ route('home_'.session('locale')) }}">
-                                {{ $settings->title }}
+                                {{ $settings->translate->where('lang', session('locale'))->first()->title }}
                             </a> {{ date('Y') == 2024 ? 2024 : '2024 -' . date('Y') }}. Bütün hüquqlarımız qorunur.
                         </p>
                     </div>

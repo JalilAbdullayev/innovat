@@ -30,57 +30,73 @@
     <form class="card" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="card-body">
-            <div class="form-floating mb-3">
-                <input type="text" class="form-control" name="title" id="title" placeholder="Başlıq" required
-                       maxlength="255" value="{{ $settings->title }}"/>
-                <label for="title" class="form-label text-white-50">
-                    Başlıq
-                </label>
+            <ul class="nav nav-tabs customtab2" role="tablist">
+                @foreach($settings->translate()->orderBy('lang')->get() as $index => $lang)
+                    <li class="nav-item">
+                        <a class="nav-link @if($index === 0) active @endif" data-bs-toggle="tab"
+                           href="#{{ $lang->lang }}" role="tab">
+                            <span class="hidden-xs-down">
+                                @if($lang->lang === 'en')
+                                    English
+                                @elseif($lang->lang === 'ru')
+                                    Русский
+                                @else
+                                    Azərbaycanca
+                                @endif
+                            </span>
+                        </a>
+                    </li>
+                @endforeach
+            </ul>
+            <div class="tab-content">
+                @foreach($settings->translate()->orderBy('lang')->get() as $index => $tsetting)
+                    <div class="tab-pane p-20 @if($index === 0) active @endif" id="{{ $tsetting->lang }}"
+                         role="tabpanel">
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" name="title[]" id="title" placeholder="Ad"
+                                   maxlength="255" value="{{ $tsetting->title }}" required/>
+                            <label for="title" class="form-label text-white-50">
+                                Başlıq
+                            </label>
+                        </div>
+                        @error('title')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" name="author[]" id="author" placeholder="Müəllif"
+                                   maxlength="255" value="{{ $tsetting->author }}" required/>
+                            <label for="author" class="form-label text-white-50">
+                                Müəllif
+                            </label>
+                        </div>
+                        @error('author')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" name="keywords[]" id="keywords"
+                                   placeholder="Açar şözlər" maxlength="255" value="{{ $tsetting->keywords }}"
+                                   required/>
+                            <label for="keywords" class="form-label text-white-50">
+                                Açar sözlər
+                            </label>
+                        </div>
+                        @error('keywords')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
+                        <div class="mb-3">
+                            <label for="description" class="form-label text-white-50">
+                                Açıqlama
+                            </label>
+                            <textarea class="form-control" id="description" name="description[]"
+                                      placeholder="Açıqlama">{{ $tsetting->description }}</textarea>
+                        </div>
+                        @error('text')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
+                        <input type="hidden" name="lang[]" value="{{ $tsetting->lang }}"/>
+                    </div>
+                @endforeach
             </div>
-            @error('title')
-            <div class="alert alert-danger">{{ $message }}</div>
-            @enderror
-            <div class="form-floating mb-3">
-                <input type="text" class="form-control" name="author" id="author" placeholder="Müəllif" required
-                       maxlength="255" value="{{ $settings->author }}"/>
-                <label for="author" class="form-label text-white-50">
-                    Müəllif
-                </label>
-            </div>
-            @error('author')
-            <div class="alert alert-danger">{{ $message }}</div>
-            @enderror
-            <div class="form-floating mb-3">
-                <input type="text" class="form-control" name="keywords" id="keywords" placeholder="Açar Sözlər" required
-                       maxlength="255" value="{{ $settings->keywords }}"/>
-                <label for="keywords" class="form-label text-white-50">
-                    Açar Sözlər
-                </label>
-            </div>
-            @error('keywords')
-            <div class="alert alert-danger">{{ $message }}</div>
-            @enderror
-            <div class="form-floating mb-3">
-                <textarea class="form-control" name="description" id="description" required
-                          placeholder="Haqqımızda">{{ $settings->description }}</textarea>
-                <label for="description" class="form-label text-white-50">
-                    Haqqımızda
-                </label>
-            </div>
-            @error('description')
-            <div class="alert alert-danger">{{ $message }}</div>
-            @enderror
-            <div class="mb-3">
-                <label for="favicon" class="form-label text-white-50">
-                    Favicon
-                </label>
-                <input type="file" name="favicon" id="favicon" class="dropify" data-show-remove="false"
-                       accept="image/jpeg, image/png, image/jpg, image/gif, image/svg"
-                       data-default-file="{{ asset(Storage::url($settings->favicon)) }}"/>
-            </div>
-            @error('favicon')
-            <div class="alert alert-danger">{{ $message }}</div>
-            @enderror
             <div class="mb-3">
                 <label for="logo" class="form-label text-white-50">
                     Loqo
@@ -92,8 +108,19 @@
             @error('logo')
             <div class="alert alert-danger">{{ $message }}</div>
             @enderror
+            <div class="mb-3">
+                <label for="favicon" class="form-label text-white-50">
+                    Favicon
+                </label>
+                <input type="file" name="favicon" id="favicon" class="dropify" data-show-remove="false"
+                       accept="image/jpeg, image/png, image/jpg, image/gif, image/svg+xml"
+                       data-default-file="{{ asset(Storage::url($settings->favicon)) }}"/>
+            </div>
+            @error('favicon')
+            <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
             <button type="submit" class="btn w-100 btn-primary text-white">
-                Yadda saxla
+                Saxla
             </button>
         </div>
     </form>
