@@ -11,8 +11,8 @@ use Illuminate\View\View as Viewable;
 
 class PrivacyController extends Controller {
     public function index(): Viewable {
-        $privacy = Privacy::first();
-        return View::make('admin.privacy', compact('privacy'));
+        $privacy = Privacy::firstOrFail()->translate()->orderBy('lang')->get();
+        return View::make('admin.privacy', compact( 'privacy'));
     }
 
     public function update(Request $request) {

@@ -6,10 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Team extends Model {
     protected $table = 'team';
-    protected $primaryKey = 'id';
-    protected $fillable = [
-        'name',
-        'position',
-        'image',
-    ];
+    protected $fillable = ['image'];
+
+    public function translate() {
+        return $this->hasMany(TeamTranslate::class, 'member_id', 'id');
+    }
 }

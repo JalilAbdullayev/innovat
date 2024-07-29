@@ -20,8 +20,8 @@ class TeamRequest extends FormRequest {
      */
     public function rules(): array {
         return [
-            'name' => ['required', 'string', 'max:255'],
-            'position' => ['required', 'string', 'max:255'],
+            'name' => ['required', 'max:255'],
+            'position' => ['required', 'max:255'],
             'image' => ['image', 'mimes:png,jpg,jpeg,svg', 'max:2048']
         ];
     }

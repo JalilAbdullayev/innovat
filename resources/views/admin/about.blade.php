@@ -33,7 +33,7 @@
         @csrf
         <div class="card-body">
             <ul class="nav nav-tabs customtab2" role="tablist">
-                @foreach($about->translate as $index => $lang)
+                @foreach($about->translate()->orderBy('lang')->get() as $index => $lang)
                     <li class="nav-item">
                         <a class="nav-link @if($index === 0) active @endif" data-bs-toggle="tab"
                            href="#{{ $lang->lang }}" role="tab">
@@ -45,13 +45,13 @@
                                 @else
                                     Azərbaycanca
                                 @endif
-                        </span>
+                            </span>
                         </a>
                     </li>
                 @endforeach
             </ul>
             <div class="tab-content">
-                @foreach($about->translate as $index => $tabout)
+                @foreach($about->translate()->orderBy('lang')->get() as $index => $tabout)
                     <div class="tab-pane p-20 @if($index === 0) active @endif" id="{{ $tabout->lang }}"
                          role="tabpanel">
                         <div class="form-floating mb-3">
@@ -104,14 +104,21 @@
         $(document).ready(function() {
             $('.dropify').dropify();
         });
-        const text = CKEDITOR.replace('text', {
-            extraAllowedContent: 'div',
-            height: 150,
-            filebrowserImageBrowseUrl: '/admin/laravel-filemanager?type=Images',
-            filebrowserImageUploadUrl: '/admin/laravel-filemanager/upload?type=Images&_token={{ csrf_token() }}',
-            filebrowserBrowseUrl: '/admin/laravel-filemanager?type=Files',
-            filebrowserUploadUrl: '/admin/laravel-filemanager/upload?type=Files&_token={{ csrf_token() }}',
-            filebrowserUploadMethod: 'form'
-        });
+
+        function createCKEditor(id) {
+            CKEDITOR.replaceAll(id, {
+                extraAllowedContent: 'div',
+                height: 150,
+                filebrowserImageBrowseUrl: '/admin/laravel-filemanager?type=Images',
+                filebrowserImageUploadUrl: '/admin/laravel-filemanager/upload?type=Images&_token={{ csrf_token() }}',
+                filebrowserBrowseUrl: '/admin/laravel-filemanager?type=Files',
+                filebrowserUploadUrl: '/admin/laravel-filemanager/upload?type=Files&_token={{ csrf_token() }}',
+                filebrowserUploadMethod: 'form'
+            });
+        }
+
+        const text1 = createCKEditor('text1');
+        const text2 = createCKEditor('text2');
+        const text3 = createCKEditor('text3');
     </script>
 @endsection

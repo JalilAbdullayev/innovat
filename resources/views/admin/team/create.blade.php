@@ -39,26 +39,106 @@
     <form class="card" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="card-body">
-            <div class="form-floating mb-3">
-                <input type="text" class="form-control" name="name" id="name" placeholder="Ad" maxlength="255"
-                       required/>
-                <label for="name" class="form-label text-white-50">
-                    Ad
-                </label>
+            <ul class="nav nav-tabs customtab2" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" data-bs-toggle="tab" href="#en" role="tab">
+                        <span class="hidden-xs-down">
+                            English
+                        </span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-bs-toggle="tab" href="#az" role="tab">
+                        <span class="hidden-xs-down">
+                            Azərbaycanca
+                        </span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-bs-toggle="tab" href="#ru" role="tab">
+                        <span class="hidden-xs-down">
+                            Русский
+                        </span>
+                    </a>
+                </li>
+            </ul>
+            <div class="tab-content">
+                <div class="tab-pane p-20 active" id="en" role="tabpanel">
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" name="name[]" id="name" placeholder="Ad"
+                               maxlength="255"
+                               required/>
+                        <label for="name" class="form-label text-white-50">
+                            Ad
+                        </label>
+                    </div>
+                    @error('name')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" name="position[]" id="position"
+                               placeholder="Vəzifə"
+                               maxlength="255"/>
+                        <label for="position" class="form-label text-white-50">
+                            Vəzifə
+                        </label>
+                    </div>
+                    @error('position')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
+                    <input type="hidden" name="lang[]" value="en"/>
+                </div>
+                <div class="tab-pane p-20" id="az" role="tabpanel">
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" name="name[]" id="name" placeholder="Ad"
+                               maxlength="255"
+                               required/>
+                        <label for="name" class="form-label text-white-50">
+                            Ad
+                        </label>
+                    </div>
+                    @error('name')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" name="position[]" id="position"
+                               placeholder="Vəzifə"
+                               maxlength="255"/>
+                        <label for="position" class="form-label text-white-50">
+                            Vəzifə
+                        </label>
+                    </div>
+                    @error('position')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
+                    <input type="hidden" name="lang[]" value="az"/>
+                </div>
+                <div class="tab-pane p-20" id="ru" role="tabpanel">
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" name="name[]" id="name" placeholder="Ad"
+                               maxlength="255"
+                               required/>
+                        <label for="name" class="form-label text-white-50">
+                            Ad
+                        </label>
+                    </div>
+                    @error('name')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" name="position[]" id="position"
+                               placeholder="Vəzifə"
+                               maxlength="255"/>
+                        <label for="position" class="form-label text-white-50">
+                            Vəzifə
+                        </label>
+                    </div>
+                    @error('position')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
+                    <input type="hidden" name="lang[]" value="ru"/>
+                </div>
             </div>
-            @error('name')
-            <div class="alert alert-danger">{{ $message }}</div>
-            @enderror
-            <div class="form-floating mb-3">
-                <input type="text" class="form-control" name="position" id="position" placeholder="Vəzifə"
-                       maxlength="255" required/>
-                <label for="position" class="form-label text-white-50">
-                    Vəzifə
-                </label>
-            </div>
-            @error('position')
-            <div class="alert alert-danger">{{ $message }}</div>
-            @enderror
             <div class="mb-3">
                 <label for="image" class="form-label text-white-50">
                     Şəkil
