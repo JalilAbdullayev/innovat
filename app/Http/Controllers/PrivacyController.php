@@ -20,7 +20,6 @@ class PrivacyController extends Controller {
         $request->validate(['text' => 'required'], ['text.required' => 'The privacy policy field is required.']);
         for($i = 0; $i < count($request->lang); $i++) {
             PrivacyTranslate::wherePrivacyId($privacy->id)->whereLang($request->lang[$i])->update([
-                'title' => $request->title[$i],
                 'text' => $request->text[$i]
             ]);
         }

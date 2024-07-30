@@ -53,16 +53,6 @@
                 @foreach($privacy as $index => $tprivacy)
                     <div class="tab-pane p-20 @if($index === 0) active @endif" id="{{ $tprivacy->lang }}"
                          role="tabpanel">
-                        <div class="form-floating mb-3">
-                            <input type="text" class="form-control" name="title[]" id="title" placeholder="Ad"
-                                   maxlength="255" value="{{ $tprivacy->title }}" required/>
-                            <label for="title" class="form-label text-white-50">
-                                Başlıq
-                            </label>
-                        </div>
-                        @error('title')
-                        <div class="alert alert-danger">{{ $message }}</div>
-                        @enderror
                         <div class="mb-3">
                             <label for="text" class="form-label text-white-50">
                                 Mətn
