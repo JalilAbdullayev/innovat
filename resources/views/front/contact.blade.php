@@ -1,5 +1,5 @@
 @extends('front.master')
-@section('title', 'Contact')
+@section('title', __('Contact'))
 @section('css')
     <style>
         .bg_image {
@@ -20,7 +20,7 @@
                     <div class="bread-crumb-area-inner">
                         <div class="breadcrumb-top">
                             <a href="{{ route('home_'.session('locale')) }}">
-                                Home
+                                {{ __('Home') }}
                             </a>
                             <span class="text-white"> / </span>
                             <span class="active text-white">

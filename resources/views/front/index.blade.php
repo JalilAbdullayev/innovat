@@ -1,6 +1,6 @@
 @php use Illuminate\Support\Facades\Storage; @endphp
 @extends('front.master')
-@section('title', 'Home')
+@section('title', __('Home'))
 @section('content')
     <!-- rts banner top-area -->
     <div class="rts-banner-top-area pt--100 pt_sm--50" id="home">
@@ -28,7 +28,7 @@
                 <div class="col-lg-5">
                     <div class="thumbnail-about-five">
                         <h2 class="title">
-                            Welcome to {{ $settings->translate->where('lang', session('locale'))->first()->title }}
+                            {{ __('Welcome') }}
                         </h2>
                     </div>
                 </div>
@@ -52,7 +52,7 @@
                         <!-- title-left -->
                         <div class="title-area-style-five-left">
                             <h2 class="title">
-                                Services
+                                {{ __('Services') }}
                             </h2>
                         </div>
                     </div>
@@ -95,7 +95,7 @@
                 <div class="col-lg-12">
                     <div class="title-process-stock-text">
                         <h2 class="stock-text-1 end">
-                            Advantages
+                            {{ __('Advantages') }}
                         </h2>
                     </div>
                 </div>

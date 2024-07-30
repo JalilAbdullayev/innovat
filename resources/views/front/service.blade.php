@@ -21,9 +21,9 @@
                         </a> /
                         <a href="{{ route('services') }}">
                             @if(Route::is('service_'.session('locale')))
-                                Services
+                                {{ __('Services') }}
                             @elseif(Route::is('quality_'.session('locale')))
-                                Advantages
+                                {{ __('Advantages') }}
                             @endif
                         </a> /
                         <span class="active">
@@ -56,9 +56,9 @@
                             <div class="topa-rea">
                                 <h4 class="title">
                                     @if(Route::is('service_'.session('locale')))
-                                        Other Services
+                                        {{ __('Other Services') }}
                                     @elseif(Route::is('quality_'.session('locale')))
-                                        Other Advantages
+                                        {{ __('Other Advantages') }}
                                     @endif
                                 </h4>
                             </div>
@@ -81,10 +81,10 @@
                         <div class="service-left-sidebar-wized">
                             <div class="topa-rea">
                                 <span class="pre">
-                                    Contact
+                                    {{ __('Contact') }}
                                 </span>
                                 <h4 class="title">
-                                    Let's start now!
+                                    {{ __("Let's start now!") }}
                                 </h4>
                             </div>
                             <div class="body">

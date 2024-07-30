@@ -5,7 +5,8 @@
     <meta charset="UTF-8"/>
     <meta name="csrf-token" content="{{ csrf_token() }}"/>
     <meta name="author" content="{{ $settings->translate->where('lang', session('locale'))->first()->author }}"/>
-    <meta name="description" content="@yield('description', $settings->translate->where('lang', session('locale'))->first()->description)"/>
+    <meta name="description"
+          content="@yield('description', $settings->translate->where('lang', session('locale'))->first()->description)"/>
     <meta name="keywords"
           content="@yield('keywords') @unless(Route::is('home_'.session('locale'))) , @endunless {{ $settings->translate->where('lang', session('locale'))->first()->keywords
           }}"/>
@@ -37,32 +38,32 @@
                 <ul class="parent-ul">
                     <li>
                         <a class="nav-link" href="{{ route('home_'.session('locale')) }}">
-                            Home
+                            {{ __('Home') }}
                         </a>
                     </li>
                     <li>
                         <a class="nav-link" href="{{ route('about_'.session('locale')) }}">
-                            About Us
+                            {{ __('About Us') }}
                         </a>
                     </li>
                     <li>
                         <a class="nav-link" href="{{ route('services_'.session('locale')) }}">
-                            Services
+                            {{ __('Services') }}
                         </a>
                     </li>
                     <li>
                         <a class="nav-link" href="{{ route('team_'.session('locale')) }}">
-                            Our Team
+                            {{ __('Our Team') }}
                         </a>
                     </li>
                     <li>
                         <a class="nav-link" href="{{ route('contact_'.session('locale')) }}">
-                            Contact
+                            {{ __('Contact') }}
                         </a>
                     </li>
                     <li>
                         <a class="nav-link" href="{{ route('privacy_'.session('locale')) }}">
-                            Privacy Policy
+                            {{ __('Privacy Policy') }}
                         </a>
                     </li>
                 </ul>
@@ -76,7 +77,9 @@
                     <rect y="7" width="24" height="2" fill="#D9D9D9"></rect>
                 </svg>
             </div>
-            <span class="d-none">Menu</span>
+            <span class="d-none">
+                {{ __('Menu') }}
+            </span>
         </div>
         <nav class="navigation d-sm-none d-lg-block">
             <ul class="parent-ul">
@@ -111,8 +114,7 @@
                     <!-- single footer two wozed -->
                     <div class="single-footer-wized">
                         <a href="{{ route('home_'.session('locale')) }}" class="logo d-inline-block mb--30"
-                           style="width:
-                        10%">
+                           style="width: 10%">
                             <img src="{{ asset(Storage::url($settings->logo)) }}" alt="{{ $settings->title }}"/>
                         </a>
                         <!-- social style two -->
@@ -128,7 +130,7 @@
                         <div class="location-information">
                             <div class="location">
                                 <h6 class="title text-white">
-                                    Contact Us
+                                    {{ __('Contact') }}
                                 </h6>
                             </div>
                             <div class="location">
@@ -153,38 +155,38 @@
                         <div class="location-information">
                             <div class="location">
                                 <h6 class="title text-white">
-                                    Navigation
+                                    {{ __('Navigation') }}
                                 </h6>
                             </div>
                             <ul>
                                 <li>
                                     <a href="{{ route('home_'.session('locale')) }}">
-                                        Home
+                                        {{ __('Home') }}
                                     </a>
                                 </li>
                                 <li>
                                     <a href="{{ route('about_'.session('locale')) }}">
-                                        About Us
+                                        {{ __('About Us') }}
                                     </a>
                                 </li>
                                 <li>
                                     <a href="{{ route('services_'.session('locale')) }}">
-                                        Services
+                                        {{ __('Services') }}
                                     </a>
                                 </li>
                                 <li>
                                     <a href="{{ route('team_'.session('locale')) }}">
-                                        Our Team
+                                        {{ __('Our Team') }}
                                     </a>
                                 </li>
                                 <li>
                                     <a href="{{ route('contact_'.session('locale')) }}">
-                                        Contact
+                                        {{ __('Contact') }}
                                     </a>
                                 </li>
                                 <li>
                                     <a href="{{ route('privacy_'.session('locale')) }}">
-                                        Privacy Policy
+                                        {{ __('Privacy Policy') }}
                                     </a>
                                 </li>
                             </ul>
@@ -203,7 +205,8 @@
                         <p class="disc">
                             &copy; <a href="{{ route('home_'.session('locale')) }}">
                                 {{ $settings->translate->where('lang', session('locale'))->first()->title }}
-                            </a> {{ date('Y') == 2024 ? 2024 : '2024 -' . date('Y') }}. Bütün hüquqlarımız qorunur.
+                            </a> {{ date('Y') == 2024 ? 2024 : '2024 -' . date('Y') }}
+                            . {{ __('All rights reserved.') }}
                         </p>
                     </div>
                 </div>
@@ -237,33 +240,33 @@
                     </form>
                 </li>
                 <li>
-                    <a href="{{ route('home_'.session('locale')) }}" class="main">
-                        Home
+                    <a class="main" href="{{ route('home_'.session('locale')) }}">
+                        {{ __('Home') }}
                     </a>
                 </li>
                 <li>
                     <a class="main" href="{{ route('about_'.session('locale')) }}">
-                        About Us
+                        {{ __('About Us') }}
                     </a>
                 </li>
                 <li>
                     <a class="main" href="{{ route('services_'.session('locale')) }}">
-                        Services
+                        {{ __('Services') }}
                     </a>
                 </li>
                 <li>
                     <a class="main" href="{{ route('team_'.session('locale')) }}">
-                        Our Team
+                        {{ __('Our Team') }}
                     </a>
                 </li>
                 <li>
                     <a class="main" href="{{ route('contact_'.session('locale')) }}">
-                        Contact
+                        {{ __('Contact') }}
                     </a>
                 </li>
                 <li>
                     <a class="main" href="{{ route('privacy_'.session('locale')) }}">
-                        Privacy Policy
+                        {{ __('Privacy Policy') }}
                     </a>
                 </li>
             </ul>

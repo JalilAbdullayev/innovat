@@ -1,5 +1,5 @@
 @extends('front.master')
-@section('title', 'Privacy Policy')
+@section('title', __('Privacy Policy'))
 @section('content')
 	<!-- bread croumba rea start -->
 	<div class="container">
@@ -8,11 +8,13 @@
 				<div class="bread-crumb-area-inner">
 					<div class="breadcrumb-top">
 						<a href="{{ route('home_'.session('locale')) }}">Home</a> /
-						<span class="active">Privacy Policy</span>
+						<span class="active">
+                            {{ __('Privacy Policy') }}
+                        </span>
 					</div>
 					<div class="bottom-title">
 						<h1 class="title">
-                            {{ $privacy->translate->where('lang', session('locale'))->first()->title }}
+                            {{ __('Privacy Policy') }}
                         </h1>
 					</div>
 				</div>

@@ -1,6 +1,6 @@
 @php use Illuminate\Support\Facades\Storage; @endphp
 @extends('front.master')
-@section('title', 'Our Team')
+@section('title', __('Our Team'))
 @section('content')
 	<!-- bread croumba rea start -->
 	<div class="container">
@@ -8,7 +8,9 @@
 			<div class="col-lg-12">
 				<div class="bread-crumb-area-inner">
 					<div class="breadcrumb-top">
-						<a href="{{ route('home_'.session('locale')) }}">Home</a> /
+						<a href="{{ route('home_'.session('locale')) }}">
+                            {{ __('Home') }}
+                        </a> /
 						<span class="active">
                             @yield('title')
                         </span>

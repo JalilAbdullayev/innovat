@@ -1,6 +1,6 @@
 @php use Illuminate\Support\Facades\Storage;use Illuminate\Support\Str; @endphp
 @extends('front.master')
-@section('title', 'Services')
+@section('title', __('Services'))
 @section('css')
     <style>
         .portfolio-grid-col-2-single h5 {
@@ -16,7 +16,7 @@
                 <div class="bread-crumb-area-inner">
                     <div class="breadcrumb-top">
                         <a href="{{ route('home_'.session('locale')) }}">
-                            Home
+                            {{ __('Home') }}
                         </a> /
                         <span class="active">
 							@yield('title')
@@ -79,7 +79,7 @@
                 <div class="bread-crumb-area-inner">
                     <div class="bottom-title">
                         <h1 class="title">
-                            Advantages
+                            {{ __('Advantages') }}
                         </h1>
                     </div>
                 </div>
