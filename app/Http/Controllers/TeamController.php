@@ -66,13 +66,10 @@ class TeamController extends Controller {
             $explode = explode('.', $fileOriginalName);
             $fileOriginalName = Str::slug($explode[0], '-') . '_' . now()->format('d-m-Y-H-i-s') . '.' . $extension;
             Storage::putFileAs('public/images/team/', $file, $fileOriginalName);
-        } else {
-            $fileOriginalName = null;
+            $member->update([
+                'image' => 'images/team/' . $fileOriginalName,
+            ]);
         }
-
-        $member->update([
-            'image' => $fileOriginalName ? 'images/team/' . $fileOriginalName : null,
-        ]);
 
         for($i = 0; $i < count($request->lang); $i++) {
             TeamTranslate::whereMemberId($id)->whereLang($request->lang[$i])->update([

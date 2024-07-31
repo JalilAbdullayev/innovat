@@ -29,7 +29,7 @@ class SettingsController extends Controller {
             $explode = explode('.', $fileOriginalName);
             $fileOriginalName = Str::slug($explode[0], '-') . '_' . now()->format('d-m-Y-H-i-s') . '.' . $extension;
             Storage::putFileAs('public/images/', $file, $fileOriginalName);
-            $settings->favicon = 'images/' . $fileOriginalName;
+            $settings->update(['favicon' => 'images/' . $fileOriginalName]);
         }
         if($request->file('logo')) {
             if($request->logo) {
@@ -41,7 +41,7 @@ class SettingsController extends Controller {
             $explode = explode('.', $fileOriginalName);
             $fileOriginalName = Str::slug($explode[0], '-') . '_' . now()->format('d-m-Y-H-i-s') . '.' . $extension;
             Storage::putFileAs('public/images/', $file, $fileOriginalName);
-            $settings->logo = 'images/' . $fileOriginalName;
+            $settings->update(['logo' => 'images/' . $fileOriginalName]);
         }
 
         for($i = 0; $i < count($request->lang); $i++) {

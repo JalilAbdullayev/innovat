@@ -69,13 +69,10 @@ class QualityController extends Controller {
             $explode = explode('.', $fileOriginalName);
             $fileOriginalName = Str::slug($explode[0], '-') . '_' . now()->format('d-m-Y-H-i-s') . '.' . $extension;
             Storage::putFileAs('public/images/qualities/', $file, $fileOriginalName);
-        } else {
-            $fileOriginalName = null;
+            $quality->update([
+                'image' => 'images/qualities/' . $fileOriginalName
+            ]);
         }
-
-        Quality::whereId($id)->update([
-            'image' => $fileOriginalName ? 'images/qualities/' . $fileOriginalName : null,
-        ]);
 
         for($i = 0; $i < count($request->lang); $i++) {
             QualityTranslate::whereQualityId($id)->whereLang($request->lang[$i])->update([

@@ -69,13 +69,10 @@ class ServiceController extends Controller {
             $explode = explode('.', $fileOriginalName);
             $fileOriginalName = Str::slug($explode[0], '-') . '_' . now()->format('d-m-Y-H-i-s') . '.' . $extension;
             Storage::putFileAs('public/images/services/', $file, $fileOriginalName);
-        } else {
-            $fileOriginalName = null;
+            $service->update([
+                'image' => 'images/services/' . $fileOriginalName
+            ]);
         }
-
-        Service::whereId($id)->update([
-            'image' => $fileOriginalName ? 'images/services/' . $fileOriginalName : null,
-        ]);
 
         for($i = 0; $i < count($request->lang); $i++) {
             ServiceTranslate::whereServiceId($id)->whereLang($request->lang[$i])->update([

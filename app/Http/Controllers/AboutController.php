@@ -26,7 +26,7 @@ class AboutController extends Controller {
             $explode = explode('.', $fileOriginalName);
             $fileOriginalName = Str::slug($explode[0], '-') . '_' . now()->format('d-m-Y-H-i-s') . '.' . $extension;
             Storage::putFileAs('public/images/', $file, $fileOriginalName);
-            $about->image = 'images/' . $fileOriginalName;
+            $about->update(['image' => 'images/' . $fileOriginalName]);
         }
 
         for($i = 0; $i < count($request->lang); $i++) {
