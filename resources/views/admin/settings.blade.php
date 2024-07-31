@@ -2,6 +2,12 @@
 @section('title', 'Parametrlər')
 @section('css')
     <link rel="stylesheet" href="{{ asset('back/node_modules/dropify/dist/css/dropify.min.css') }}"/>
+    <style>
+        textarea {
+            display: block;
+            height: 10rem;
+        }
+    </style>
 @endsection
 @section('content')
     <!-- Bread crumb -->

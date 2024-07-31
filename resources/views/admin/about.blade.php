@@ -91,7 +91,7 @@
             <div class="alert alert-danger">{{ $message }}</div>
             @enderror
             <button type="submit" class="btn w-100 btn-primary text-white">
-                Yarat
+                Saxla
             </button>
         </div>
     </form>
