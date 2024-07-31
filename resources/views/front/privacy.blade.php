@@ -5,7 +5,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-12">
-				<div class="bread-crumb-area-inner">
+				<div class="bread-crumb-area-inner text-white">
 					<div class="breadcrumb-top">
 						<a href="{{ route('home_'.session('locale')) }}">Home</a> /
 						<span class="active">
@@ -13,7 +13,7 @@
                         </span>
 					</div>
 					<div class="bottom-title">
-						<h1 class="title">
+						<h1 class="title text-white">
                             {{ __('Privacy Policy') }}
                         </h1>
 					</div>
@@ -30,7 +30,7 @@
 			<div class="row">
 				<div class="col-lg-12">
 					<div class="terms-wrapper-main">
-						<p class="disc">
+						<p class="disc text-white">
 							{!! $privacy->translate->where('lang', session('locale'))->first()->text !!}
                         </p>
                     </div>

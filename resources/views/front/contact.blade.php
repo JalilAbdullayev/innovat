@@ -5,10 +5,6 @@
         .bg_image {
             background-image: url("{{ asset('front/images/nicholas-doherty-pONBhDyOFoM-unsplash.jpg') }}");
         }
-
-        .left-contact img {
-            border-radius: 35%;
-        }
     </style>
 @endsection
 @section('content')
@@ -19,7 +15,7 @@
                 <div class="col-lg-12">
                     <div class="bread-crumb-area-inner">
                         <div class="breadcrumb-top">
-                            <a href="{{ route('home_'.session('locale')) }}">
+                            <a href="{{ route('home_'.session('locale')) }}" class="text-white">
                                 {{ __('Home') }}
                             </a>
                             <span class="text-white"> / </span>
@@ -49,8 +45,8 @@
                 <div class="col-md-6">
                     @include('front.components.form', ['class' => 'contact-form-conatct-page'])
                 </div>
-                <div class="text-center" id="contact">
-                    <p class="fs-3">
+                <div class="text-center text-white" id="contact">
+                    <p class="fs-3 text-white">
                         {{ $contact->address }}
                     </p>
                     <a class="d-block text-decoration-underline"

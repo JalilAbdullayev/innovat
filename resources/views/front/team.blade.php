@@ -6,7 +6,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-12">
-				<div class="bread-crumb-area-inner">
+				<div class="bread-crumb-area-inner text-white">
 					<div class="breadcrumb-top">
 						<a href="{{ route('home_'.session('locale')) }}">
                             {{ __('Home') }}
@@ -16,7 +16,7 @@
                         </span>
 					</div>
 					<div class="bottom-title">
-						<h1 class="title">
+						<h1 class="title text-white">
 							@yield('title')
 						</h1>
 					</div>
@@ -30,17 +30,6 @@
 
 	<div class="rts-team-area rts-section-gap">
 		<div class="container">
-			<div class="row">
-				<div class="col-lg-12 text-center">
-					<div class="title-style-center">
-						<h2 class="title">Meet Our Talented Team</h2>
-						<p class="disc">
-							we are proud to have a dedicated and skilled team of professionals <br>
-							who are passionate about interior renovation and design.
-						</p>
-					</div>
-				</div>
-			</div>
 			<div class="row mt--30 g-24">
 				@foreach($team as $member)
 					<div class="col-lg-3 col-md-4 col-sm-6 col-12">
@@ -52,10 +41,10 @@
                             </span>
 							<div class="team-content">
 								<div class="name-area">
-									<h6 class="name text-start">
+									<h6 class="name text-start text-white">
 										{{ $member->translate->where('lang', session('locale'))->first()->name }}
 									</h6>
-									<span class="desig pl--0">
+									<span class="desig pl--0 text-white">
                                         {{ $member->translate->where('lang', session('locale'))->first()->position }}
                                     </span>
 								</div>

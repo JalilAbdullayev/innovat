@@ -1,3 +1,12 @@
+body {
+  background-color: rgba(33, 163, 115, 0.4);
+  background-image: url("https://www.royalhaskoningdhv.com/-/media/images/services/maritime/green-ports-maturity-scan-h.jpeg?h=1080&iar=0&w=1920&hash=213A4F4522BC5FE2DC6255BA37B56250");
+  background-size: 100vw 100vh;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  box-shadow: inset 0 1000px 0 1000px rgba(6, 118, 72, 0.7);
+}
+
 .single-working-prcess-one::after, .single-working-prcess-one::before, .separetor-process-top::after {
   display: none;
 }
@@ -41,7 +50,6 @@ iframe {
 }
 
 .breadcrumb-top a {
-  color: #067648 !important;
   margin: 0 0.5rem;
 }
 .breadcrumb-top a:hover {
@@ -51,15 +59,58 @@ iframe {
   margin: 0 0.5rem;
 }
 
-.single-working-prcess-one:hover .inner p {
-  color: rgb(255, 255, 255);
+.single-working-prcess-one .inner {
+  background-color: #21A373;
 }
 .single-working-prcess-one .inner p {
-  transition: 0.3s;
+  color: #FFF;
 }
 
+.single-service-style-five {
+  border-radius: 2%;
+  padding: 0;
+}
+.single-service-style-five .icon-area {
+  margin: 0;
+}
+.single-service-style-five .body {
+  padding: 15px;
+  border-radius: 0 0 5% 5%;
+  background-color: #21A373;
+}
+.single-service-style-five .body .disc {
+  margin: 0 !important;
+}
+.single-service-style-five .body p {
+  color: #FFF;
+}
 .single-service-style-five h6 {
   font-size: 19px !important;
+}
+
+.portfolio-grid-col-2-single a {
+  display: flex;
+  align-items: center;
+  min-height: 80px;
+}
+.portfolio-grid-col-2-single a h5 {
+  font-size: 1.125em !important;
+  font-weight: 500 !important;
+  line-height: 1.125em !important;
+}
+.portfolio-grid-col-2-single .service-text {
+  border-radius: 0 0 5% 5%;
+  background-color: #21A373;
+}
+.portfolio-grid-col-2-single .service-text p {
+  color: #FFF;
+}
+.portfolio-grid-col-2-single .quality-text {
+  padding: 15px;
+  background-color: #21A373;
+}
+.portfolio-grid-col-2-single .quality-text p {
+  color: #FFF;
 }
 
 .rts-footer-area {
@@ -82,12 +133,15 @@ header .logo-area {
   width: 7% !important;
 }
 
-.sticky-150 a {
+.sticky-150 a, .sticky-150 select {
   color: #21A373 !important;
+}
+.sticky-150 option {
+  background-color: #FFF !important;
 }
 
 #contact a:hover {
-  color: #21A373;
+  color: rgba(255, 255, 255, 0.5);
 }
 
 #side-bar i {
@@ -126,6 +180,21 @@ header .logo-area {
 }
 .mob-select:focus {
   border-bottom: 1px solid #21A373;
+}
+
+.team-area-start-one:hover .name {
+  color: #30373E !important;
+}
+.team-area-start-one:hover .desig {
+  color: #7D7D7D !important;
+}
+
+.history-right-area-inner p {
+  color: #FFF;
+}
+
+.left-contact img {
+  border-radius: 35%;
 }
 
 /*# sourceMappingURL=custom.css.map */

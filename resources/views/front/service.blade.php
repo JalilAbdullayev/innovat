@@ -10,7 +10,7 @@
     @endif
 @endsection
 @section('content')
-    <!-- bread croumba rea start -->
+    <!-- breadcrumb rea start -->
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
@@ -19,7 +19,7 @@
                         <a href="{{ route('home_'.session('locale')) }}">
                             Home
                         </a> /
-                        <a href="{{ route('services') }}">
+                        <a href="{{ route('services_'.session('locale')) }}">
                             @if(Route::is('service_'.session('locale')))
                                 {{ __('Services') }}
                             @elseif(Route::is('quality_'.session('locale')))
@@ -27,19 +27,19 @@
                             @endif
                         </a> /
                         <span class="active">
-                            {{ $item->title }}
+                            {{ $item->where('lang', session('locale'))->first()->title }}
                         </span>
                     </div>
                     <div class="bottom-title">
                         <h1 class="title">
-                            {{ $item->title }}
+                            {{ $item->where('lang', session('locale'))->first()->title }}
                         </h1>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- bread croumba rea end -->
+    <!-- breadcrumb rea end -->
     <!-- header three area end -->
 
 
@@ -64,15 +64,17 @@
                             </div>
                             <div class="body">
                                 @foreach($others as $otherItem)
-                                    <!-- inglle short service -->
-                                    <a href="{{ route('service', $otherItem->slug) }}"
+                                    <!-- single short service -->
+                                    <a href="@if(Route::is('service_'.session('locale'), $otherItem->translate->where('lang', session('locale'))->first()->slug))
+                                    {{ route('service_'.session('locale'), $otherItem->translate->where('lang', session('locale'))->first()->slug) }}
+                                    @else {{ route('quality_'.session('locale'), $otherItem->translate->where('lang', session('locale'))->first()->slug) }} @endif"
                                        class="single-short-service">
                                         <p class="name">
-                                            {{ $otherItem->title }}
+                                            {{ $otherItem->translate->where('lang', session('locale'))->first()->title }}
                                         </p>
                                         <i class="fa-light fa-arrow-right"></i>
                                     </a>
-                                    <!-- inglle short service end -->
+                                    <!-- single short service end -->
                                 @endforeach
                             </div>
                         </div>
@@ -104,10 +106,10 @@
                             <img src="{{ asset(Storage::url($item->image)) }}" alt="{{ $item->title }}" class="w-50"/>
                         </div>
                         <h3 class="title-main-s">
-                            {{ $item->title }}
+                            {{ $item->where('lang', session('locale'))->first()->title }}
                         </h3>
                         <p class="disc">
-                            {!! $item->text !!}
+                            {!! $item->where('lang', session('locale'))->first()->text !!}
                         </p>
                     </div>
                     <!-- service -details right-content end -->

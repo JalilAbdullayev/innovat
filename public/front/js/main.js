@@ -1495,9 +1495,9 @@
                     },
                     opacity: 1,
                     scale: 1,
-                    duration: 1.5,
+                    duration: .5,
                     ease: "bounce",
-                    stagger: 0.5,
+                    stagger: .5,
                     rotation: 0
                 })
             }
@@ -1510,9 +1510,9 @@
                     },
                     opacity: 1,
                     scale: 1,
-                    duration: 1.5,
+                    duration: .5,
                     ease: "bounce",
-                    stagger: 0.9,
+                    stagger: .5,
                     rotation: 0
                 })
             }

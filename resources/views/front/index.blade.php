@@ -3,40 +3,42 @@
 @section('title', __('Home'))
 @section('content')
     <!-- rts banner top-area -->
-    <div class="rts-banner-top-area pt--100 pt_sm--50" id="home">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <!-- banner-top-five start -->
-                    <div class="banner-top-five">
-                        <div class="left-area">
-                            <h1 class="title rts_hero__title">
-                                {{ $settings->translate->where('lang', session('locale'))->first()->title }}
-                            </h1>
+    <div id="background">
+        <div class="rts-banner-top-area pt--100 pt_sm--50" id="home">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <!-- banner-top-five start -->
+                        <div class="banner-top-five">
+                            <div class="left-area">
+                                <h1 class="title rts_hero__title text-white">
+                                    {{ $settings->translate->where('lang', session('locale'))->first()->title }}
+                                </h1>
+                            </div>
                         </div>
+                        <!-- banner-top-five end -->
                     </div>
-                    <!-- banner-top-five end -->
                 </div>
             </div>
         </div>
-    </div>
-    <!-- rts banner top-area end -->
-    <!-- about area start -->
-    <div class="about-area-one rts-section-gap" id="about">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-5">
-                    <div class="thumbnail-about-five">
-                        <h2 class="title">
-                            {{ __('Welcome') }}
-                        </h2>
+        <!-- rts banner top-area end -->
+        <!-- about area start -->
+        <div class="about-area-one rts-section-gap" id="about">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-5">
+                        <div class="thumbnail-about-five">
+                            <h2 class="title text-white">
+                                {{ __('Welcome') }}
+                            </h2>
+                        </div>
                     </div>
-                </div>
-                <div class="col-lg-5">
-                    <div class="about-right-inner-five rts-slide-up">
-                        <p class="disc-1">
-                            {{ $settings->translate->where('lang', session('locale'))->first()->description }}
-                        </p>
+                    <div class="col-lg-5">
+                        <div class="about-right-inner-five rts-slide-up">
+                            <p class="disc-1 text-white">
+                                {{ $settings->translate->where('lang', session('locale'))->first()->description }}
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -51,7 +53,7 @@
                     <div class="service-full-top-wrapper">
                         <!-- title-left -->
                         <div class="title-area-style-five-left">
-                            <h2 class="title">
+                            <h2 class="title text-white">
                                 {{ __('Services') }}
                             </h2>
                         </div>
@@ -63,16 +65,16 @@
                     <div class="col-lg-3 col-md-6 col-12">
                         <!-- single-service start -->
                         <div class="single-service-style-five d-flex justify-content-end flex-column h-100">
-                            <div class="icon-area h-auto">
+                            <div class="icon-area">
                                 <img src="{{ asset(Storage::url($service->image)) }}" alt=""/>
                             </div>
                             <div class="body">
                                 <a href="{{ route('service_'.session('locale'), $service->translate->where('lang', session('locale'))->first()->slug) }}">
-                                    <h6 class="title">
+                                    <h6 class="title text-white">
                                         {{ $service->translate->where('lang', session('locale'))->first()->title }}
                                     </h6>
                                 </a>
-                                <p class="disc">
+                                <p class="disc text-white">
                                     @if($service->translate->where('lang', session('locale'))->first()->description)
                                         {{ $service->translate->where('lang', session('locale'))->first()->description }}
                                     @else
@@ -108,9 +110,9 @@
                             <div class="inner inner-{{ $index }}">
                                 <style>
                                     .single-working-prcess-one {
-                                        .inner-{{ $index }}        {
+                                        .inner-{{ $index }}         {
                                             &::after {
-                                                background-image: url("{{ asset('public'.Storage::url($quality->image)) }}");
+                                                background-image: url("{{ asset(Storage::url($quality->image)) }}");
                                                 background-position: center;
                                             }
 
@@ -129,10 +131,10 @@
                                 </style>
                                 <span>0{{ $index + 1 }}</span>
                                 <a href="{{ route('quality_'.session('locale'), $quality->translate->where('lang', session('locale'))->first()->slug) }}"
-                                   class="title">
+                                   class="title text-white">
                                     {{ $quality->translate->where('lang', session('locale'))->first()->title }}
                                 </a>
-                                <p class="disc text-black">
+                                <p class="disc text-white">
                                     @if($quality->translate->where('lang', session('locale'))->first()->description)
                                         {{ $quality->translate->where('lang', session('locale'))->first()->description }}
                                     @else
