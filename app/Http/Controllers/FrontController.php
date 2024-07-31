@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\About;
 use App\Models\Privacy;
 use App\Models\Quality;
+use App\Models\QualityTranslate;
 use App\Models\Service;
+use App\Models\ServiceTranslate;
 use App\Models\Team;
 use Illuminate\Support\Facades\View;
 use Illuminate\View\View as Viewable;
@@ -25,13 +27,13 @@ class FrontController extends Controller {
     }
 
     public function service($slug): Viewable {
-        $item = Service::whereSlug($slug)->firstOrFail();
+        $item = ServiceTranslate::whereSlug($slug)->join('services', 'services.id', '=', 'services_translate.service_id')->firstOrFail();
         $others = Service::where('id', '!=', $item->id)->take(3)->inRandomOrder()->get();
         return View::make('front.service', compact('item', 'others'));
     }
 
     public function quality($slug): Viewable {
-        $item = Quality::whereSlug($slug)->firstOrFail();
+        $item = QualityTranslate::whereSlug($slug)->join('qualities', 'qualities.id', '=', 'qualities_translate.quality_id')->firstOrFail();
         $others = Quality::where('id', '!=', $item->id)->take(3)->inRandomOrder()->get();
         return View::make('front.service', compact('item', 'others'));
     }
