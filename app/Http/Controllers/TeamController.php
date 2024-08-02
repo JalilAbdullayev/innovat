@@ -58,7 +58,7 @@ class TeamController extends Controller {
         $member = Team::findOrFail($id);
         if($request->file('image')) {
             if($member->image) {
-                Storage::delete('public/' . $member->image);
+                unlink(storage_path('app/public/' . $member->image));
             }
             $file = $request->file('image');
             $extension = $file->getClientOriginalExtension();

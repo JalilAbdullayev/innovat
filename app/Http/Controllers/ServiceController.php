@@ -61,7 +61,7 @@ class ServiceController extends Controller {
         $service = Service::findOrFail($id);
         if($request->file('image')) {
             if($service->image) {
-                Storage::delete('public/' . $service->image);
+                unlink(storage_path('app/public/' . $service->image));
             }
             $file = $request->file('image');
             $extension = $file->getClientOriginalExtension();
@@ -69,9 +69,7 @@ class ServiceController extends Controller {
             $explode = explode('.', $fileOriginalName);
             $fileOriginalName = Str::slug($explode[0], '-') . '_' . now()->format('d-m-Y-H-i-s') . '.' . $extension;
             Storage::putFileAs('public/images/services/', $file, $fileOriginalName);
-            $service->update([
-                'image' => 'images/services/' . $fileOriginalName
-            ]);
+            $service->update(['image' => 'images/services/' . $fileOriginalName]);
         }
 
         for($i = 0; $i < count($request->lang); $i++) {

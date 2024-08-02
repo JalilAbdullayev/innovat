@@ -18,7 +18,7 @@ class AboutController extends Controller {
         $about = About::firstOrFail();
         if($request->file('image')) {
             if($about->image) {
-                Storage::delete('public/' . $about->image);
+                unlink(storage_path('app/public/' . $about->image));
             }
             $file = $request->file('image');
             $extension = $file->getClientOriginalExtension();

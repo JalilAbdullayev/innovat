@@ -20,7 +20,7 @@ class SettingsController extends Controller {
     public function update(SettingRequest $request): RedirectResponse {
         $settings = Settings::firstOrFail();
         if($request->file('favicon')) {
-            if($request->favicon) {
+            if($settings->favicon) {
                 Storage::delete('public/' . $settings->favicon);
             }
             $file = $request->file('favicon');
@@ -32,7 +32,7 @@ class SettingsController extends Controller {
             $settings->update(['favicon' => 'images/' . $fileOriginalName]);
         }
         if($request->file('logo')) {
-            if($request->logo) {
+            if($settings->logo) {
                 Storage::delete('public/' . $settings->logo);
             }
             $file = $request->file('logo');

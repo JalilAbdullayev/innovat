@@ -61,7 +61,7 @@ class QualityController extends Controller {
         $quality = Quality::findOrFail($id);
         if($request->file('image')) {
             if($quality->image) {
-                Storage::delete('public/' . $quality->image);
+                unlink(storage_path('app/public/' . $quality->image));
             }
             $file = $request->file('image');
             $extension = $file->getClientOriginalExtension();
@@ -69,9 +69,7 @@ class QualityController extends Controller {
             $explode = explode('.', $fileOriginalName);
             $fileOriginalName = Str::slug($explode[0], '-') . '_' . now()->format('d-m-Y-H-i-s') . '.' . $extension;
             Storage::putFileAs('public/images/qualities/', $file, $fileOriginalName);
-            $quality->update([
-                'image' => 'images/qualities/' . $fileOriginalName
-            ]);
+            $quality->update(['image' => 'images/qualities/' . $fileOriginalName]);
         }
 
         for($i = 0; $i < count($request->lang); $i++) {
