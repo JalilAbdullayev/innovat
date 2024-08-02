@@ -41,8 +41,9 @@
                                 <img src="{{ asset(Storage::url($service->image)) }}"
                                      alt="{{ $service->translate->where('lang', session('locale'))->first()->title }}"/>
                             </a>
-                            <div class="inner-text service-text mt--0 p-3">
-                                <a href="{{ route('service_'.session('locale'), $service->translate->where('lang', session('locale'))->first()->slug) }}">
+                            <div class="inner-text service-text mt-0 p-3">
+                                <a href="{{ route('service_'.session('locale'), $service->translate->where('lang', session('locale'))->first()->slug) }}"
+                                   class="d-flex align-items-center">
                                     <h5 class="title text-white">
                                         {{ $service->translate->where('lang', session('locale'))->first()->title }}
                                     </h5>

@@ -46,7 +46,7 @@ iframe {
   margin: 0 1rem;
 }
 .social-style-two-wrapper li a:hover {
-  border-color: #FFF;
+  border-color: white;
 }
 
 .breadcrumb-top a {
@@ -63,7 +63,7 @@ iframe {
   background-color: #21A373;
 }
 .single-working-prcess-one .inner p {
-  color: #FFF;
+  color: white;
 }
 
 .single-service-style-five {
@@ -82,18 +82,16 @@ iframe {
   margin: 0 !important;
 }
 .single-service-style-five .body p {
-  color: #FFF;
+  color: white;
 }
 .single-service-style-five h6 {
   font-size: 19px !important;
 }
 
-.portfolio-grid-col-2-single a {
-  display: flex;
-  align-items: center;
+.portfolio-grid-col-2-single .inner-text a {
   min-height: 80px;
 }
-.portfolio-grid-col-2-single a h5 {
+.portfolio-grid-col-2-single .inner-text a h5 {
   font-size: 1.125em !important;
   font-weight: 500 !important;
   line-height: 1.125em !important;
@@ -103,18 +101,18 @@ iframe {
   background-color: #21A373;
 }
 .portfolio-grid-col-2-single .service-text p {
-  color: #FFF;
+  color: white;
 }
 .portfolio-grid-col-2-single .quality-text {
   padding: 15px;
   background-color: #21A373;
 }
 .portfolio-grid-col-2-single .quality-text p {
-  color: #FFF;
+  color: white;
 }
 
 .rts-footer-area {
-  background-color: rgb(6, 140, 72) !important;
+  background-color: rgb(6, 150, 72) !important;
 }
 .rts-footer-area a, .rts-footer-area h6, .rts-footer-area p {
   color: #FFF !important;
@@ -124,7 +122,7 @@ iframe {
 }
 
 header {
-  background-color: rgb(6, 140, 72);
+  background-color: rgb(6, 150, 72);
 }
 header a {
   color: #FFF !important;
@@ -190,7 +188,7 @@ header .logo-area {
 }
 
 .history-right-area-inner p {
-  color: #FFF;
+  color: white;
 }
 
 .left-contact img {
@@ -198,7 +196,25 @@ header .logo-area {
 }
 
 .terms-and-condition-wrapper p {
-  color: #FFF;
+  color: white;
+}
+
+.service-details-content-right p {
+  color: white;
+}
+
+.single-short-service:hover {
+  background-color: #21A373 !important;
+}
+
+.border-green {
+  border-color: #21A373;
+  color: #067648;
+}
+
+.outline-green:focus {
+  border-color: #21A373 !important;
+  color: rgba(0, 0, 0, 0.5);
 }
 
 /*# sourceMappingURL=custom.css.map */

@@ -1,44 +1,42 @@
-@php use Illuminate\Support\Facades\Storage; @endphp
+@php use App\Models\About;use Illuminate\Support\Facades\Storage; @endphp
 @extends('front.master')
 @section('title', __('Home'))
 @section('content')
     <!-- rts banner top-area -->
-    <div id="background">
-        <div class="rts-banner-top-area pt--100 pt_sm--50" id="home">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <!-- banner-top-five start -->
-                        <div class="banner-top-five">
-                            <div class="left-area">
-                                <h1 class="title rts_hero__title text-white">
-                                    {{ $settings->translate->where('lang', session('locale'))->first()->title }}
-                                </h1>
-                            </div>
+    <div class="rts-banner-top-area" id="home">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <!-- banner-top-five start -->
+                    <div class="banner-top-five">
+                        <div class="left-area">
+                            <h1 class="title rts_hero__title text-white">
+                                {{ $settings->translate->where('lang', session('locale'))->first()->title }}
+                            </h1>
                         </div>
-                        <!-- banner-top-five end -->
                     </div>
+                    <!-- banner-top-five end -->
                 </div>
             </div>
         </div>
-        <!-- rts banner top-area end -->
-        <!-- about area start -->
-        <div class="about-area-one rts-section-gap" id="about">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-5">
-                        <div class="thumbnail-about-five">
-                            <h2 class="title text-white">
-                                {{ __('Welcome') }}
-                            </h2>
-                        </div>
+    </div>
+    <!-- rts banner top-area end -->
+    <!-- about area start -->
+    <div class="about-area-one py-5" id="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="thumbnail-about-five">
+                        <h2 class="title text-white">
+                            {{ About::first()->translate->where('lang', session('locale'))->first()->title }}
+                        </h2>
                     </div>
-                    <div class="col-lg-5">
-                        <div class="about-right-inner-five rts-slide-up">
-                            <p class="disc-1 text-white">
-                                {{ $settings->translate->where('lang', session('locale'))->first()->description }}
-                            </p>
-                        </div>
+                </div>
+                <div class="col-lg-5">
+                    <div class="about-right-inner-five rts-slide-up">
+                        <p class="disc-1 text-white">
+                            {{ $settings->translate->where('lang', session('locale'))->first()->description }}
+                        </p>
                     </div>
                 </div>
             </div>
@@ -110,7 +108,7 @@
                             <div class="inner inner-{{ $index }}">
                                 <style>
                                     .single-working-prcess-one {
-                                        .inner-{{ $index }}         {
+                                        .inner-{{ $index }}           {
                                             &::after {
                                                 background-image: url("{{ asset(Storage::url($quality->image)) }}");
                                                 background-position: center;

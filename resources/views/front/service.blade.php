@@ -14,7 +14,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
-                <div class="bread-crumb-area-inner">
+                <div class="bread-crumb-area-inner text-white">
                     <div class="breadcrumb-top">
                         <a href="{{ route('home_'.session('locale')) }}">
                             Home
@@ -31,7 +31,7 @@
                         </span>
                     </div>
                     <div class="bottom-title">
-                        <h1 class="title">
+                        <h1 class="title text-white">
                             {{ $item->where('lang', session('locale'))->first()->title }}
                         </h1>
                     </div>
@@ -105,7 +105,7 @@
                         <div class="large-image">
                             <img src="{{ asset(Storage::url($item->image)) }}" alt="{{ $item->title }}" class="w-50"/>
                         </div>
-                        <h3 class="title-main-s">
+                        <h3 class="title-main-s text-white">
                             {{ $item->where('lang', session('locale'))->first()->title }}
                         </h3>
                         <p class="disc">
