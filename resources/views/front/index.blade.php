@@ -3,7 +3,7 @@
 @section('title', __('Home'))
 @section('content')
     <!-- rts banner top-area -->
-    <div class="rts-banner-top-area" id="home">
+    <div class="rts-banner-top-area pb-5" id="home">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
@@ -89,7 +89,7 @@
     </div>
     <!-- servce area end -->
     <!-- our woring process area start -->
-    <div class="our-working-process rts-section-gapBottom" id="quality">
+    <div class="our-working-process rts-section-gapBottom pt--60" id="quality">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
