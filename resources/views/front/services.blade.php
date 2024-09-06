@@ -95,13 +95,13 @@
                                         {{ $quality->translate->where('lang', session('locale'))->first()->title }}
                                     </h5>
                                 </a>
-                                <p class="disc m-0">
+                                <div class="disc m-0">
                                     @if($quality->translate->where('lang', session('locale'))->first()->description)
                                         {{ $quality->translate->where('lang', session('locale'))->first()->description }}
                                     @else
                                         {!! Str::limit($quality->translate->where('lang', session('locale'))->first()->text) !!}
                                     @endif
-                                </p>
+                                </div>
                             </div>
                         </div>
                         <!-- single portfolio grid col-2 end -->

@@ -34,6 +34,39 @@
     <form class="card" method="POST">
         @csrf
         <div class="card-body">
+            <ul class="nav nav-tabs customtab2" role="tablist">
+                @foreach($contact->translate()->orderBy('lang')->get() as $index => $lang)
+                    <li class="nav-item">
+                        <a class="nav-link @if($index === 0) active @endif" data-bs-toggle="tab"
+                           href="#{{ $lang->lang }}" role="tab">
+                            <span class="hidden-xs-down">
+                                @if($lang->lang === 'en')
+                                    English
+                                @elseif($lang->lang === 'ru')
+                                    Русский
+                                @else
+                                    Azərbaycanca
+                                @endif
+                            </span>
+                        </a>
+                    </li>
+                @endforeach
+            </ul>
+            <div class="tab-content">
+                @foreach($contact->translate()->orderBy('lang')->get() as $index => $tcontact)
+                    <div class="tab-pane p-20 @if($index === 0) active @endif" id="{{ $tcontact->lang }}"
+                         role="tabpanel">
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" name="address[]" id="address" placeholder="Ünvan"
+                                   maxlength="255" value="{{ $tcontact->address }}" required/>
+                            <label for="address" class="form-label text-white-50">
+                                Ünvan
+                            </label>
+                        </div>
+                        <input type="hidden" name="lang[]" value="{{ $tcontact->lang }}"/>
+                    </div>
+                @endforeach
+            </div>
             <div class="form-floating mb-3">
                 <input type="tel" class="form-control" name="phone" id="phone" placeholder="Telefon" required
                        maxlength="20" value="{{ $contact->phone }}"/>
@@ -52,16 +85,6 @@
                 </label>
             </div>
             @error('email')
-            <div class="alert alert-danger">{{ $message }}</div>
-            @enderror
-            <div class="form-floating mb-3">
-                <input type="text" class="form-control" name="address" id="address" placeholder="Ünvan" required
-                       maxlength="255" value="{{ $contact->address }}"/>
-                <label for="address" class="form-label text-white-50">
-                    Ünvan
-                </label>
-            </div>
-            @error('address')
             <div class="alert alert-danger">{{ $message }}</div>
             @enderror
             <div class="form-floating mb-3">
