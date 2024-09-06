@@ -88,6 +88,11 @@ iframe {
 
     .icon-area {
         margin: 0;
+        height: 210px;
+
+        img {
+            height: 100%
+        }
     }
 
     .body {
@@ -110,6 +115,14 @@ iframe {
 }
 
 .portfolio-grid-col-2-single {
+    .thumbnail {
+        height: 210px;
+
+        img {
+            height: 100%
+        }
+    }
+
     .inner-text a {
         min-height: 80px;
 

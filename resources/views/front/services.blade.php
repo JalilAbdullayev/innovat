@@ -37,7 +37,7 @@
                         <div
                             class="portfolio-grid-col-2-single rts-portfolio__item d-flex justify-content-end flex-column h-100">
                             <a href="{{ route('service_'.session('locale'), $service->translate->where('lang', session('locale'))->first()->slug) }}"
-                               class="thumbnail h-auto">
+                               class="thumbnail">
                                 <img src="{{ asset(Storage::url($service->image)) }}"
                                      alt="{{ $service->translate->where('lang', session('locale'))->first()->title }}"/>
                             </a>
