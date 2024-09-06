@@ -83,7 +83,7 @@
         $('#myTable').DataTable({
             ordering: false
         });
-        $('.btn-outline-danger').click(function() {
+        $(document).on('click', '.btn-outline-danger', function() {
             let id = $(this).closest('tr').attr('id');
             $.ajax({
                 url: '{{ route('admin.services.delete', ':id') }}'.replace(':id', id),

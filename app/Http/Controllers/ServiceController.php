@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 use App\Http\Requests\CustomRequest;
 use App\Models\Service;
 use App\Models\ServiceTranslate;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Str;
@@ -84,13 +86,16 @@ class ServiceController extends Controller {
         return Redirect::route('admin.services.index');
     }
 
-    public function delete($id): RedirectResponse {
+    public function delete($id): JsonResponse {
         $service = Service::findOrFail($id);
         ServiceTranslate::whereServiceId($id)->delete();
         if($service->image && Storage::exists('public/' . $service->image)) {
             Storage::delete('public/' . $service->image);
         }
         $service->delete();
-        return Redirect::route('admin.services.index');
+        if(session('error')) {
+            return Response::json(['success' => false, 'error' => session('error')]);
+        }
+        return Response::json(['success' => true]);
     }
 }
