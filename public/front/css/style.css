@@ -21,7 +21,7 @@
 19.working Process
 20.Product
 21.product-details
-22.testimonials 
+22.testimonials
 23.blog
 24. Team
 25. Footer
@@ -443,7 +443,7 @@ var {
 }
 
 /*---------------------------
-	List Style 
+	List Style
 ---------------------------*/
 ul,
 ol {
@@ -634,7 +634,7 @@ ol ul {
 }
 
 /*=========================
-    Section Separation 
+    Section Separation
 ==========================*/
 .slick-dotted.slick-slider {
   margin-bottom: 0;
@@ -9830,7 +9830,7 @@ iframe {
 }
 
 /*===============================
-    Background Color 
+    Background Color
 =================================*/
 .bg-color-primary {
   background: var(--color-primary);
@@ -9861,7 +9861,7 @@ iframe {
 }
 
 /*===========================
-Background Image 
+Background Image
 =============================*/
 .bg_image {
   background-repeat: no-repeat;
@@ -10535,7 +10535,7 @@ textarea:-ms-input-placeholder {
 }
 
 /*=============================
-	Overlay styles 
+	Overlay styles
 ==============================*/
 [data-overlay],
 [data-black-overlay],
@@ -10639,7 +10639,7 @@ textarea:-ms-input-placeholder {
 }
 
 /*------------------------------
-    Scroll Up 
+    Scroll Up
 --------------------------------*/
 #scrollUp {
   width: 70px;
@@ -14096,9 +14096,9 @@ Copyright (c) 2015 Daniel Eden
   opacity: 1;
 }
 
-/* -------------------------------- 
+/* --------------------------------
 
-xclip 
+xclip
 
 -------------------------------- */
 .cd-headline.clip span {
@@ -20141,14 +20141,14 @@ a {
 
 .portfolio-grid-col-2-single .thumbnail {
   display: block;
-  max-width: max-content;
+  /*max-width: max-content;*/
   overflow: hidden;
 }
 .portfolio-grid-col-2-single .thumbnail:hover img {
   transform: scale(1.1);
 }
 .portfolio-grid-col-2-single .thumbnail img {
-  width: max-content;
+  /*width: max-content;*/
   transition: 0.5s;
 }
 .portfolio-grid-col-2-single .inner-text {
