@@ -72,6 +72,10 @@ iframe {
 }
 .single-service-style-five .icon-area {
   margin: 0;
+  height: 210px;
+}
+.single-service-style-five .icon-area img {
+  height: 100%;
 }
 .single-service-style-five .body {
   padding: 15px;
@@ -88,6 +92,12 @@ iframe {
   font-size: 19px !important;
 }
 
+.portfolio-grid-col-2-single .thumbnail {
+  height: 210px;
+}
+.portfolio-grid-col-2-single .thumbnail img {
+  height: 100%;
+}
 .portfolio-grid-col-2-single .inner-text a {
   min-height: 80px;
 }
