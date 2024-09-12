@@ -333,7 +333,13 @@
             }
         }).then(response => response.json()).then(data => {
             if(data.success) {
-                window.location.href = '{{ url('/') }}/' + locale + '/';
+                if(locale === 'az') {
+                    window.location.href = '{{ url('/') }}/' + locale + '/ana-sehife'
+                } else if(locale === 'ru') {
+                    window.location.href = '{{ url('/') }}/' + locale + '/glavnaya'
+                } else {
+                    window.location.href = '{{ url('/') }}/home'
+                }
             }
         });
     }
