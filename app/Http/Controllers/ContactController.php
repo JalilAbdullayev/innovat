@@ -20,6 +20,9 @@ class ContactController extends Controller {
         $contact->phone = $request->phone;
         $contact->email = $request->email;
         $contact->map = $request->map;
+        $contact->facebook = $request->facebook;
+        $contact->instagram = $request->instagram;
+        $contact->linkedin = $request->linkedin;
 
         for($i = 0; $i < count($request->lang); $i++) {
             ContactTranslate::whereContactId($contact->id)->whereLang($request->lang[$i])->update([

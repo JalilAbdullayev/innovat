@@ -78,6 +78,36 @@
             <div class="alert alert-danger">{{ $message }}</div>
             @enderror
             <div class="form-floating mb-3">
+                <input type="url" class="form-control" name="facebook" id="facebook" placeholder="Facebook" required
+                       maxlength="255" value="{{ $contact->facebook }}"/>
+                <label for="facebook" class="form-label text-white-50">
+                    Facebook
+                </label>
+            </div>
+            @error('facebook')
+            <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
+            <div class="form-floating mb-3">
+                <input type="url" class="form-control" name="instagram" id="instagram" placeholder="Instagram" required
+                       maxlength="255" value="{{ $contact->instagram }}"/>
+                <label for="instagram" class="form-label text-white-50">
+                    Instagram
+                </label>
+            </div>
+            @error('instagram')
+            <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
+            <div class="form-floating mb-3">
+                <input type="url" class="form-control" name="linkedin" id="linkedin" placeholder="LinkedIn" required
+                       maxlength="255" value="{{ $contact->linkedin }}"/>
+                <label for="linkedin" class="form-label text-white-50">
+                    LinkedIn
+                </label>
+            </div>
+            @error('linkedin')
+            <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
+            <div class="form-floating mb-3">
                 <input type="email" class="form-control" name="email" id="email" placeholder="E-mail" required
                        maxlength="255" value="{{ $contact->email }}"/>
                 <label for="email" class="form-label text-white-50">

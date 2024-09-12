@@ -12,7 +12,10 @@ class Contact extends Model {
     protected $fillable = [
         'phone',
         'email',
-        'map'
+        'map',
+        'facebook',
+        'instagram',
+        'linkedin'
     ];
 
     public function translate(): HasMany {
